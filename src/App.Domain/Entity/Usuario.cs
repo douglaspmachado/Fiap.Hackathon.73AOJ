@@ -34,7 +34,7 @@ namespace App.Domain.Entity
         /// 
         /// </summary>
         [Required]
-        public string CPF { get; set; }
+        public string CPF_CNPJ { get; set; }
 
         /// <summary>
         /// 
