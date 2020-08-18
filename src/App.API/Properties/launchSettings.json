@@ -1,0 +1,17 @@
+{
+  "Docker": {
+    "commandName": "Docker",
+    "launchBrowser": true,
+    "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/swagger/index.html",
+    "httpPort": 90002
+  },
+  "profiles": {
+    "PlayerShares.API": {
+      "commandName": "Project"
+    }
+  }
+}
+
+
+
+

@@ -1,0 +1,140 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PlayerShares.API</name>
+    </assembly>
+    <members>
+        <member name="M:PlayerShares.API.Controllers.JogadorController.Get">
+            <summary>
+            Retorna uma lista completa de todos os jogadores cadastrados na plataforma
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:PlayerShares.API.Controllers.JogadorController.Add(PlayerShares.Domain.Entity.Jogador)">
+            <summary>
+            Insere um novo jogador na plataforma
+            </summary>
+            <remarks>
+            
+            Exemplo de Request:
+            
+            POST 
+            
+                {
+                    "Nome": "Teste",
+                    "SOBRENOME": "Teste",
+                    "IDADE": "Teste",
+                    "NICKNAME": "Teste",
+                    "EMAIL": "Teste",
+                    "HABILIDADE": "Teste",
+                    "HABILIDADE_2": "Teste",
+                    "HABILIDADE_3": "Teste",
+                    "HABILIDADE_4": "Teste",
+                    "PART_TORNEIO": "Teste"
+                
+                }
+            
+            
+            </remarks>
+            <param name="jogador"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PlayerShares.API.Controllers.JogadorController.Update(PlayerShares.Domain.Entity.Jogador)">
+            <summary>
+            Atualiza dados do jogador
+            </summary>
+            <remarks>
+            
+            Exemplo de Request:
+            
+            PUT 
+            
+                {
+                    "Id": "1"
+                    "Nome": "Teste",
+                    "SOBRENOME": "Teste",
+                    "IDADE": "Teste",
+                    "NICKNAME": "Teste",
+                    "EMAIL": "Teste",
+                    "HABILIDADE": "Teste",
+                    "HABILIDADE_2": "Teste",
+                    "HABILIDADE_3": "Teste",
+                    "HABILIDADE_4": "Teste",
+                    "PART_TORNEIO": "Teste"
+                
+                }
+            
+            
+            </remarks>
+            <param name="jogador"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PlayerShares.API.Controllers.JogadorController.Select(System.Int32)">
+            <summary>
+            Retorna dados do jogador
+            </summary>
+            <remarks>
+            
+            Exemplo de Request:
+            
+            GET 
+            
+                {
+                    "jogadorID": 1,
+                }
+            
+            
+            </remarks>
+            <param name="jogador"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PlayerShares.API.Controllers.TorneioController.Add(PlayerShares.Domain.Entity.Torneio)">
+             <summary>
+             Insere um novo torneio e sua cotas
+             </summary>
+             <remarks>
+             
+                             
+              {
+              "NomeTorneio": "Torneio de LOL",
+              "ValorInscricao": 100.00,
+              "Descricao": "Torneio de LOL",
+              "Status": "Fase de inscrição",
+              "JogadorID": 1,
+              "ListaCotas": [
+                {
+                  "ValorCota": 50.00,
+                  "ValorRetorno": 10.00
+                },
+             {
+                  "ValorCota": 50.00,
+                  "ValorRetorno": 10.00
+                },
+              ]
+            }
+             
+             </remarks>
+             <param name="torneio"></param>
+             <returns></returns>
+        </member>
+        <member name="M:PlayerShares.API.Controllers.TorneioController.Get(System.Int32)">
+            <summary>
+            Retorna lista dos torneio/cotas atrelados ao Jogador
+            </summary>
+            <remarks>
+            
+            Exemplo de Request:
+            
+            GET 
+            
+                {
+                    "jogadorID": 1,
+                }
+            
+            
+            </remarks>
+            <param name="jogador"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
