@@ -1,5 +1,7 @@
 using System;
 using System.Threading.Tasks;
+using App.Application.Interfaces;
+using App.Domain.Entity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace App.API
@@ -8,27 +10,42 @@ namespace App.API
     [ApiController]
     public class PacienteController : ControllerBase
     {
+        private readonly IPacienteRepository _pacienteRepository;
+
+        public PacienteController(IPacienteRepository pacienteRepository)
+        {
+            this._pacienteRepository = pacienteRepository;
+        }
         /// <summary>
         /// Retorna um paciente específico cadastrados na plataforma
         /// </summary>
         /// <param name="cpf"></param>
         /// <returns></returns>
         // [HttpGet]
-        // [Route("Get")]
-        // public async Task<IActionResult> Get(string cpf)
-        // {
-        //     try
-        //     {
-                
-        //     }
-        //     catch (Exception)
-        //     {
-        //         return StatusCode(500);
-        //     }
+        // [Route("Get/{cpf}")]
+        public async Task<IActionResult> Get(string cpf)
+        {
+            try
+            {
+                Usuario usuario = _pacienteRepository.Get(cpf);
 
-        // }
+                if (usuario != null)
+                {
+                    return Ok(usuario);
+                }
+                else
+                {
+                    return NotFound("Usuário não encontrado");
+                }
+            }
+            catch (Exception)
+            {
+                return StatusCode(500);
+            }
 
-                /// <summary>
+        }
+
+        /// <summary>
         /// Insere um paciente na plataforma
         /// </summary>
         /// <remarks>
@@ -38,28 +55,37 @@ namespace App.API
         /// POST 
         /// 
         ///     {
-        ///    
+        ///         
         ///     
         ///     }
         /// 
         /// </remarks>
         /// <returns></returns>
-        // [HttpPost]
-        // [Route("Insert")]
-        // public async Task<IActionResult> Add([FromBody]Paciente paciente)
-        // {
-        //     try
-        //     {
+        [HttpPost]
+        [Route("Insert")]
+        public async Task<IActionResult> Add([FromBody]Usuario usuario)
+        {
+            try
+            {
+                int execCount = _pacienteRepository.Insert(usuario);
 
-        //     }
-        //     catch (Exception)
-        //     {
-        //         return StatusCode(500);
-        //     }
+                if (execCount > 0)
+                {
+                    return Ok(execCount.ToString());
+                }
+                else
+                {
+                    return BadRequest();
+                }
+            }
+            catch (Exception)
+            {
+                return StatusCode(500);
+            }
 
-        // }
+        }
 
-         /// <summary>
+        /// <summary>
         /// Atualiza dados do paciente
         /// </summary>
         /// <remarks>
@@ -74,33 +100,33 @@ namespace App.API
         /// 
         /// 
         /// </remarks>
-        /// <param name="paciente"></param>
+        /// <param name="usuario"></param>
         /// <returns></returns>
-        // [HttpPut]
-        // [Route("Update")]
-        // public async Task<IActionResult> Update([FromBody]Paciente paciente)
-        // {
-        //     try
-        //     {
+        [HttpPut]
+        [Route("Update")]
+        public async Task<IActionResult> Update([FromBody]Usuario usuario)
+        {
+            try
+            {
 
-        //         //int execCount = 
+                int execCount = _pacienteRepository.Update(usuario); 
 
-        //         if (execCount > 0)
-        //         {
-        //             return Ok();
-        //         }
-        //         else
-        //         {
-        //             return BadRequest();
-        //         }
+                if (execCount > 0)
+                {
+                    return Ok();
+                }
+                else
+                {
+                    return BadRequest();
+                }
 
-        //     }
-        //     catch (Exception)
-        //     {
+            }
+            catch (Exception)
+            {
 
-        //         return StatusCode(500);
-        //     }
-        // }
+                return StatusCode(500);
+            }
+        }
 
         /// <summary>
         /// Exclui Jogador
