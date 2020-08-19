@@ -1,67 +1,60 @@
-using System;
+ï»¿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Text;
 
 namespace App.Domain.Entity
 {
-    public class Usuario
+   public class Endereco
     {
-        public Usuario()
-        {
- 
-        }
-
-        public int Id { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
         [Required]
-        public string Nome { get; set; }
+        public string CEP { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
         [Required]
-        public string Sobrenome { get; set; }
+        public string Pais { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
         [Required]
-        public DateTime DataNascimento { get; set; }
+        public string Estado { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
         [Required]
-        public string CPF_CNPJ { get; set; }
+        public string Cidade { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
         [Required]
-        public string Celular { get; set; }
+        public string Logradouro { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
         [Required]
-        public Endereco Endereco { get; set; }
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        [RegularExpression(".+\\@.+\\..+", ErrorMessage = "Informe um email válido...")]
-        public string Email { get; set; }
+        public string Bairro { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
+        [Required]
+        public string Numero { get; set; }
 
-        [Required(ErrorMessage = "Informe a senha!")]
-        public string Senha { get; set; }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        [Required]
+        public string Complemento { get; set; }
 
     }
 }
