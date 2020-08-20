@@ -128,49 +128,7 @@ namespace App.API
             }
         }
 
-        /// <summary>
-        /// Exclui Jogador
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// Exemplo de Request:
-        /// 
-        /// DELETE 
-        /// 
-        ///     {
-        ///         "cpf": 12345678909,
-        ///     }
-        /// 
-        /// 
-        /// </remarks>
-        /// <param name="paciente"></param>
-        /// <returns></returns>
-        // [HttpDelete]
-        // [Route("Delete/{cpf}")]
-        // public IActionResult Delete(string cpf)
-        // {
 
-        //     try
-        //     {
-        //         //int execCount = 
-
-        //         // if (execCount > 0)
-        //         // {
-        //         //     return Ok();
-        //         // }
-        //         // else
-        //         // {
-        //         //     return NotFound();
-        //         // }
-
-        //     }
-        //     catch (Exception ex)
-        //     {
-
-        //         return StatusCode(500);
-        //     }
-
-        // }
 
     }
 }
