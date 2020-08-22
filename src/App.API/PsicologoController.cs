@@ -22,7 +22,7 @@ namespace App.API
         /// <param name="idPsicologo"></param>
         /// <returns></returns>
         // [HttpGet]
-        // [Route("Get/{cpf}")]
+        // [Route("Get/{idPsicologo}")]
         public async Task<IActionResult> Get(int idPsicologo)
         {
             try
