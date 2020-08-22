@@ -19,15 +19,15 @@ namespace App.API
         /// <summary>
         /// Retorna um paciente específico cadastrados na plataforma
         /// </summary>
-        /// <param name="cpf"></param>
+        /// <param name="idPaciente"></param>
         /// <returns></returns>
         // [HttpGet]
         // [Route("Get/{cpf}")]
-        public async Task<IActionResult> Get(string cpf)
+        public async Task<IActionResult> Select(int idPaciente)
         {
             try
             {
-                Usuario usuario = _pacienteRepository.Get(cpf);
+                Usuario usuario = _pacienteRepository.Select(idPaciente);
 
                 if (usuario != null)
                 {

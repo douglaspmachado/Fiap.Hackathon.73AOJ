@@ -36,7 +36,7 @@ namespace App.Infra.Repository
             throw new NotImplementedException();
         }
 
-        public Usuario Get(string cpf)
+        public Usuario Select(int idUsuario)
         {
             throw new NotImplementedException();
         }
