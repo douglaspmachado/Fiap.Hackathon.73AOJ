@@ -1,3 +1,4 @@
+using System;
 using System.Data;
 using System.Data.SqlClient;
 using System.Text;
@@ -27,18 +28,17 @@ namespace App.Infra.Repository
 
         public int Insert(Usuario usuario)
         {
-            return 0;
+           throw new NotImplementedException();
         }
 
         public int Update(Usuario usuario)
         {
-            return 0;
+            throw new NotImplementedException();
         }
 
         public Usuario Get(string cpf)
         {
-            Usuario usuario = null;
-            return usuario;
+            throw new NotImplementedException();
         }
     }
 }

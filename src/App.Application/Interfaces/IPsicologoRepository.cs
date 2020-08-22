@@ -16,5 +16,7 @@ namespace App.Application.Interfaces
 
         Psicologo Select(int pPsicologoID);
 
+        Psicologo Get(int pPsicologoID);
+
     }
 }
