@@ -5,7 +5,7 @@ using System.Text;
 
 namespace App.Domain.Entity
 {
-   public class Psicologo
+   public class Psicologo : Usuario
     {
         /// <summary>
         /// 

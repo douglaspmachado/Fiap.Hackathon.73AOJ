@@ -3,6 +3,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Text;
 using App.Domain.Entity;
+using Dapper;
 using Microsoft.Extensions.Configuration;
 
 namespace App.Infra.Repository
@@ -25,9 +26,25 @@ namespace App.Infra.Repository
             }
         }
 
-        public int Insert(Psicologo usuario)
+        public int Insert(Psicologo psicologo)
         {
-            throw new NotImplementedException();
+            SQL = new StringBuilder();
+            int SCOPE_IDENTITY = 0;
+
+
+            using (IDbConnection conn = Connection)
+            {
+                SQL.AppendLine(string.Format(@"
+                                                //INSERT AQUI
+
+                                                SELECT CAST(SCOPE_IDENTITY() as int)"));
+
+
+                SCOPE_IDENTITY = conn.QueryFirstOrDefault<int>(SQL.ToString());
+
+            }
+
+            return SCOPE_IDENTITY;
         }
 
         public int Update(Psicologo usuario)
@@ -37,7 +54,21 @@ namespace App.Infra.Repository
 
         public Psicologo Get(string cpf)
         {
-            throw new NotImplementedException();
+            Psicologo psicologo = null;
+            SQL = new StringBuilder();
+
+
+            using (IDbConnection conn = Connection)
+            {
+
+                SQL.AppendLine(string.Format(@"  ", cpf));
+
+
+                psicologo = conn.QueryFirstOrDefault<Psicologo>(SQL.ToString());
+
+            }
+
+            return psicologo;
         }
     }
 }

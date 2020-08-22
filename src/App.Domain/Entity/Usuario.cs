@@ -30,11 +30,6 @@ namespace App.Domain.Entity
         [Required]
         public DateTime DataNascimento { get; set; }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        [Required]
-        public string CPF_CNPJ { get; set; }
 
         /// <summary>
         /// 
