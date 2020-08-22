@@ -9,12 +9,18 @@ namespace App.Domain.Entity
         {
  
         }
-        
+
         /// <summary>
         /// 
         /// </summary>
         [Required]
         public string CPF_CNPJ { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [Required]
+        public string Perfil { get; set; }
 
         /// <summary>
         /// 

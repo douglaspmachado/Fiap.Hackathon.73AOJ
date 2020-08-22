@@ -35,8 +35,59 @@ namespace App.Infra.Repository
 
             using (IDbConnection conn = Connection)
             {
-                SQL.AppendLine(string.Format(@"SELECT CAST(SCOPE_IDENTITY() as int)"));
-
+                SQL.AppendLine(string.Format(@"
+                        INSERT INTO [dbo].[TBUSUARIO]
+                                ([CPF_CNPJ]
+                                ,[COD_PERFIL]
+                                ,[NOME]
+                                ,[SOBRENOME]
+                                ,[DT_NASCIMENTO]
+                                ,[EMAIL]
+                                ,[SENHA]
+                                ,[CELULAR]
+                                ,[PAIS]
+                                ,[CEP]
+                                ,[ESTADO]
+                                ,[CIDADE]
+                                ,[LOGRADOURO]
+                                ,[BAIRRO]
+                                ,[NUMERO]
+                                ,[COMPLEMENTO]) 
+                            VALUES
+                                ('{0}'
+                                ,'{1}'
+                                ,'{2}'
+                                ,'{3}'
+                                ,'{4}'
+                                ,'{5}'
+                                ,'{6}'
+                                ,'{7}'
+                                ,'{8}'
+                                ,'{9}'
+                                ,'{10}'
+                                ,'{11}'
+                                ,'{12}'
+                                ,'{13}'
+                                ,'{14}'
+                                ,'{15}'
+                                ,'{16}');
+                SELECT CAST(SCOPE_IDENTITY() as int)"
+                            ,usuario.CPF_CNPJ
+                            ,usuario.Perfil
+                            ,usuario.Nome
+                            ,usuario.Sobrenome
+                            ,usuario.DataNascimento
+                            ,usuario.Email
+                            ,usuario.Senha
+                            ,usuario.Celular
+                            ,usuario.Endereco.Pais
+                            ,usuario.Endereco.CEP
+                            ,usuario.Endereco.Estado
+                            ,usuario.Endereco.Cidade
+                            ,usuario.Endereco.Logradouro
+                            ,usuario.Endereco.Bairro
+                            ,usuario.Endereco.Numero
+                            ,usuario.Endereco.Complemento));
 
                 SCOPE_IDENTITY = conn.QueryFirstOrDefault<int>(SQL.ToString());
                 
@@ -77,7 +128,25 @@ namespace App.Infra.Repository
             using (IDbConnection conn = Connection)
             {
 
-                SQL.AppendLine(string.Format(@"  ", cpf));
+                SQL.AppendLine(string.Format(@"
+                         SELECT  [CPF_CNPJ] AS CPF_CNPJ
+                              ,[COD_PERFIL] AS NOME
+                              ,[NOME] AS SOBRENOME
+                              ,[SOBRENOME] AS IDADE
+                              ,[DTNASCIMENTO] AS  NICKNAME
+                              ,[EMAIL] AS EMAIL
+                              ,[SENHA] AS Habilidade
+                              ,[CELULAR] AS Habilidade2
+                              ,[PAIS] AS Habilidade3
+                              ,[CEP] AS Habilidade4
+                              ,[ESTADO] AS ParticipaTorneio
+                              ,[CIDADE] AS ParticipaTorneio
+                              ,[LOGRADOURO] AS ParticipaTorneio
+                              ,[BAIRRO] AS ParticipaTorneio
+                              ,[NUMERO] AS ParticipaTorneio
+                              ,[COMPLEMENTO] AS ParticipaTorneio
+                          FROM [dbo].[TBUSUARIO]
+                          WHERE CPF_CNPJ = {0} ", cpf));
 
 
                 usuario = conn.QueryFirstOrDefault<Usuario>(SQL.ToString());
