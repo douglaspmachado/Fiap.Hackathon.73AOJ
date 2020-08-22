@@ -35,9 +35,91 @@ namespace App.Infra.Repository
             using (IDbConnection conn = Connection)
             {
                 SQL.AppendLine(string.Format(@"
-                                                //INSERT AQUI
-
-                                                SELECT CAST(SCOPE_IDENTITY() as int)"));
+                        INSERT INTO [dbo].[TBUSUARIO]
+                                ([CPF_CNPJ]
+                                ,[COD_PERFIL]
+                                ,[NOME]
+                                ,[SOBRENOME]
+                                ,[DT_NASCIMENTO]
+                                ,[EMAIL]
+                                ,[SENHA]
+                                ,[CELULAR]
+                                ,[PAIS]
+                                ,[CEP]
+                                ,[ESTADO]
+                                ,[CIDADE]
+                                ,[LOGRADOURO]
+                                ,[BAIRRO]
+                                ,[NUMERO]
+                                ,[COMPLEMENTO]) 
+                            VALUES
+                                ('{0}'
+                                ,'{1}'
+                                ,'{2}'
+                                ,'{3}'
+                                ,'{4}'
+                                ,'{5}'
+                                ,'{6}'
+                                ,'{7}'
+                                ,'{8}'
+                                ,'{9}'
+                                ,'{10}'
+                                ,'{11}'
+                                ,'{12}'
+                                ,'{13}'
+                                ,'{14}'
+                                ,'{15}'
+                                ,'{16}');
+                SELECT CAST(SCOPE_IDENTITY() as int)"
+                            ,psicologo.CPF_CNPJ
+                            ,psicologo.Perfil
+                            ,psicologo.Nome
+                            ,psicologo.Sobrenome
+                            ,psicologo.DataNascimento
+                            ,psicologo.Email
+                            ,psicologo.Senha
+                            ,psicologo.Celular
+                            ,psicologo.Endereco.Pais
+                            ,psicologo.Endereco.CEP
+                            ,psicologo.Endereco.Estado
+                            ,psicologo.Endereco.Cidade
+                            ,psicologo.Endereco.Logradouro
+                            ,psicologo.Endereco.Bairro
+                            ,psicologo.Endereco.Numero
+                            ,psicologo.Endereco.Complemento));
+                
+                SQL.AppendLine(string.Format(@"
+                        INSERT INTO [dbo].[TBPROFISSIONAL]
+                                ([CPF_CNPJ]
+                                ,[CRP]
+                                ,[COD_GRADUACAO]
+                                ,[INSTITUICAO_ENSINO]
+                                ,[CURSO]
+                                ,[ANO_INICIO]
+                                ,[ANO_FIM]
+                                ,[AREA_ESTUDO]
+                                ,[DESCRICAO]) 
+                            VALUES
+                                ('{0}'
+                                ,'{1}'
+                                ,'{2}'
+                                ,'{3}'
+                                ,'{4}'
+                                ,'{5}'
+                                ,'{6}'
+                                ,'{7}'
+                                ,'{8}'
+                                ,'{9}');
+                SELECT CAST(SCOPE_IDENTITY() as int)"
+                            ,psicologo.CPF_CNPJ
+                            ,psicologo.CRP
+                            ,psicologo.CodGraduacao
+                            ,psicologo.InstituicaoEnsino
+                            ,psicologo.Curso
+                            ,psicologo.AnoInicio
+                            ,psicologo.AnoTermino
+                            ,psicologo.AreaEstudo
+                            ,psicologo.DescricaoAtuacao));
 
 
                 SCOPE_IDENTITY = conn.QueryFirstOrDefault<int>(SQL.ToString());
@@ -72,6 +154,7 @@ namespace App.Infra.Repository
                                     psicologo.Curso,
                                     psicologo.DataNascimento,
                                     psicologo.DescricaoAtuacao, psicologo.CPF_CNPJ));
+                                    
 
 
                 exeCount = conn.Execute(SQL.ToString());
@@ -80,16 +163,15 @@ namespace App.Infra.Repository
             return exeCount;
         }
 
-        public Psicologo Get(string cpf)
+        public Psicologo Select(string cpf)
         {
             Psicologo psicologo = null;
             SQL = new StringBuilder();
 
-
             using (IDbConnection conn = Connection)
             {
 
-                SQL.AppendLine(string.Format(@"  ", cpf));
+                SQL.AppendLine(string.Format(@" ", cpf));
 
 
                 psicologo = conn.QueryFirstOrDefault<Psicologo>(SQL.ToString());

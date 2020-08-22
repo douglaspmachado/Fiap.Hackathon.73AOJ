@@ -119,7 +119,7 @@ namespace App.Infra.Repository
             return exeCount;
         }
 
-        public Usuario Select(int cpf)
+        public Usuario Select(string cpf)
         {
             Usuario usuario = null;
             SQL = new StringBuilder();
@@ -128,25 +128,7 @@ namespace App.Infra.Repository
             using (IDbConnection conn = Connection)
             {
 
-                SQL.AppendLine(string.Format(@"
-                         SELECT  [CPF_CNPJ] AS CPF_CNPJ
-                              ,[COD_PERFIL] AS NOME
-                              ,[NOME] AS SOBRENOME
-                              ,[SOBRENOME] AS IDADE
-                              ,[DTNASCIMENTO] AS  NICKNAME
-                              ,[EMAIL] AS EMAIL
-                              ,[SENHA] AS Habilidade
-                              ,[CELULAR] AS Habilidade2
-                              ,[PAIS] AS Habilidade3
-                              ,[CEP] AS Habilidade4
-                              ,[ESTADO] AS ParticipaTorneio
-                              ,[CIDADE] AS ParticipaTorneio
-                              ,[LOGRADOURO] AS ParticipaTorneio
-                              ,[BAIRRO] AS ParticipaTorneio
-                              ,[NUMERO] AS ParticipaTorneio
-                              ,[COMPLEMENTO] AS ParticipaTorneio
-                          FROM [dbo].[TBUSUARIO]
-                          WHERE CPF_CNPJ = {0} ", cpf));
+                SQL.AppendLine(string.Format(@" ", cpf));
 
 
                 usuario = conn.QueryFirstOrDefault<Usuario>(SQL.ToString());

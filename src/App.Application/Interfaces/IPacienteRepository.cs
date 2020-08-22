@@ -4,7 +4,7 @@ namespace App.Application.Interfaces
 {
     public interface IPacienteRepository
     {
-        Usuario Select(int idPaciente);
+        Usuario Select(string cpf);
 
         int Insert(Usuario usuario);
 
