@@ -48,7 +48,24 @@ namespace App.Infra.Repository
 
         public int Update(Usuario usuario)
         {
-            throw new NotImplementedException();
+            SQL = new StringBuilder();
+            int exeCount = 0;
+
+            using (IDbConnection conn = Connection)
+            {
+
+                SQL.AppendLine(string.Format(@" INCLUIR COMANDO SQL ", usuario.Nome,
+                                    usuario.Sobrenome,
+                                    usuario.Email,
+                                    usuario.DataNascimento,
+                                    usuario.Celular,
+                                    usuario.Endereco, usuario.Id));
+
+
+                exeCount = conn.Execute(SQL.ToString());
+            }
+
+            return exeCount;
         }
 
         public Usuario Select(int idUsuario)

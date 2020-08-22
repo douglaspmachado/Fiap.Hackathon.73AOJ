@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Text;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace App.Domain.Entity
 {
-   public class Psicologo : Usuario
+    public class Psicologo : Usuario
     {
         /// <summary>
         /// 

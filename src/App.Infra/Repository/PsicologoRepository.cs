@@ -47,9 +47,37 @@ namespace App.Infra.Repository
             return SCOPE_IDENTITY;
         }
 
-        public int Update(Psicologo usuario)
+        public int Update(Psicologo psicologo)
         {
-            throw new NotImplementedException();
+
+            SQL = new StringBuilder();
+            int exeCount = 0;
+
+            using (IDbConnection conn = Connection)
+            {
+
+                SQL.AppendLine(string.Format(@" INSERIR COMANDO SQL ",
+                                    psicologo.Nome,
+                                    psicologo.Sobrenome,
+                                    psicologo.Email,
+                                    psicologo.Endereco,
+                                    psicologo.DescricaoAtuacao,
+                                    psicologo.InstituicaoEnsino,
+                                    psicologo.Abordagens,
+                                    psicologo.AnoInicio,
+                                    psicologo.AreaEstudo,
+                                    psicologo.Atendimento,
+                                    psicologo.Celular,
+                                    psicologo.CodGraduacao,
+                                    psicologo.Curso,
+                                    psicologo.DataNascimento,
+                                    psicologo.DescricaoAtuacao, psicologo.CPF_CNPJ));
+
+
+                exeCount = conn.Execute(SQL.ToString());
+            }
+
+            return exeCount;
         }
 
         public Psicologo Get(string cpf)
