@@ -59,7 +59,7 @@ namespace App.Infra.Repository
                                     usuario.Email,
                                     usuario.DataNascimento,
                                     usuario.Celular,
-                                    usuario.Endereco, usuario.Id));
+                                    usuario.Endereco, usuario.CPF_CNPJ));
 
 
                 exeCount = conn.Execute(SQL.ToString());
@@ -68,7 +68,7 @@ namespace App.Infra.Repository
             return exeCount;
         }
 
-        public Usuario Select(int idUsuario)
+        public Usuario Select(int cpf)
         {
             Usuario usuario = null;
             SQL = new StringBuilder();

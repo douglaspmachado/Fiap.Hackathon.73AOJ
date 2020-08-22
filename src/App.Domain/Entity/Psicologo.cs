@@ -8,13 +8,6 @@ namespace App.Domain.Entity
         /// 
         /// </summary>
         [Required]
-        public string CPF_CNPJ { get; set; }
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        [Required]
         public string CRP { get; set; }
 
         /// <summary>

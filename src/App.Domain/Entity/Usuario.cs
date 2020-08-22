@@ -9,8 +9,12 @@ namespace App.Domain.Entity
         {
  
         }
-
-        public int Id { get; set; }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        [Required]
+        public string CPF_CNPJ { get; set; }
 
         /// <summary>
         /// 
@@ -47,7 +51,7 @@ namespace App.Domain.Entity
         /// <summary>
         /// 
         /// </summary>
-        [RegularExpression(".+\\@.+\\..+", ErrorMessage = "Informe um email válido...")]
+        [RegularExpression(".+\\@.+\\..+", ErrorMessage = "Informe um email vï¿½lido...")]
         public string Email { get; set; }
 
         /// <summary>
