@@ -42,7 +42,6 @@ namespace App.API
             {
                 return StatusCode(500);
             }
-
         }
 
         /// <summary>

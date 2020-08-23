@@ -14,7 +14,7 @@ namespace App.Application.Interfaces
 
         int Update(Agenda agenda);
 
-        Agenda Select(int pAgendaID);
+        Agenda Select(string cpf_cnpjPsicologo);
 
     }
 }

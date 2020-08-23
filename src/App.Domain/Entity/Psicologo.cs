@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace App.Domain.Entity
 {
@@ -63,6 +64,12 @@ namespace App.Domain.Entity
         /// </summary>
         [Required]
         public Atendimento Atendimento { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [Required]
+        public List<Agenda> Agenda { get; set; }
 
 
 
