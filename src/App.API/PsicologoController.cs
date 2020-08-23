@@ -19,15 +19,15 @@ namespace App.API
         /// <summary>
         /// Retorna um paciente específico cadastrados na plataforma
         /// </summary>
-        /// <param name="idPsicologo"></param>
+        /// <param name="cpf_cnpj"></param>
         /// <returns></returns>
         // [HttpGet]
         // [Route("Get/{idPsicologo}")]
-        public async Task<IActionResult> Get(int idPsicologo)
+        public async Task<IActionResult> GetPsicologo(string cpf_cnpj)
         {
             try
             {
-                Psicologo psicologo = _psicologoRepository.Get(idPsicologo);
+                Psicologo psicologo = _psicologoRepository.Select(cpf_cnpj);
 
                 if (psicologo != null)
                 {
@@ -41,6 +41,36 @@ namespace App.API
             catch (Exception)
             {
                 return StatusCode(500);
+            }
+
+        }
+
+        /// <summary>
+        /// Retorna uma lista completa de todos os psicologos cadastrados na plataforma
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("Get")]
+        public async Task<IActionResult> Get()
+        {
+            try
+            {
+                var listaPsicologos = _psicologoRepository.GetAll();
+
+                if (listaPsicologos != null)
+                {
+                    return Ok(listaPsicologos);
+                }
+                else
+                {
+                    return NotFound();
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Ocorreu erro: {ex.Message} - Detalhes: {ex.InnerException}");
             }
 
         }

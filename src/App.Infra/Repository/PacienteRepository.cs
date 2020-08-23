@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Text;
@@ -128,7 +129,24 @@ namespace App.Infra.Repository
             using (IDbConnection conn = Connection)
             {
 
-                SQL.AppendLine(string.Format(@" ", cpf));
+                SQL.AppendLine(string.Format(@"
+                       SELECT  [CPF_CNPJ] AS CPF_CNPJ
+                              ,[COD_PERFIL] AS COD_PERFIL
+                              ,[NOME] AS NOME
+                              ,[SOBRENOME] AS SOBRENOME
+                              ,[DT_NASCIMENTO] AS  DT_NASCIMENTO
+                              ,[EMAIL] AS EMAIL
+                              ,[CELULAR] AS CELULAR
+                              ,[PAIS] AS PAIS
+                              ,[CEP] AS CEP
+                              ,[ESTADO] AS ESTADO
+                              ,[CIDADE] AS CIDADE
+                              ,[LOGRADOURO] AS LOGRADOURO
+                              ,[BAIRRO] AS BAIRRO
+                              ,[NUMERO] AS NUMERO
+                              ,[COMPLEMENTO] AS COMPLEMENTO
+                          FROM [dbo].[TBUSUARIO]
+                          WHERE ID = {0} ", cpf));
 
 
                 usuario = conn.QueryFirstOrDefault<Usuario>(SQL.ToString());

@@ -14,9 +14,7 @@ namespace App.Application.Interfaces
 
         int Update(Psicologo psicologo);
 
-        Psicologo Select(int pPsicologoID);
-
-        Psicologo Get(int pPsicologoID);
+        Psicologo Select(string cpf);
 
     }
 }

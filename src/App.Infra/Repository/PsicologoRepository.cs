@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Text;
@@ -25,7 +26,18 @@ namespace App.Infra.Repository
                 return new SqlConnection(_configuration.GetConnectionString("aws-db"));
             }
         }
+        public IEnumerable<Psicologo> GetAll()
+        {
+            IEnumerable<Psicologo> jogadores;
 
+            using (IDbConnection conn = Connection)
+            {
+                jogadores = conn.Query<Psicologo>("SELECT * FROM TBPROFISSIONAL");
+            }
+
+            return jogadores;
+        }
+        
         public int Insert(Psicologo psicologo)
         {
             SQL = new StringBuilder();
@@ -171,13 +183,37 @@ namespace App.Infra.Repository
             using (IDbConnection conn = Connection)
             {
 
-                SQL.AppendLine(string.Format(@" ", cpf));
+                SQL.AppendLine(string.Format(@"
+                       SELECT  [U.CPF_CNPJ] AS CPF_CNPJ
+                              ,[U.COD_PERFIL] AS COD_PERFIL
+                              ,[U.NOME] AS NOME
+                              ,[U.SOBRENOME] AS SOBRENOME
+                              ,[U.DT_NASCIMENTO] AS  DT_NASCIMENTO
+                              ,[U.EMAIL] AS EMAIL
+                              ,[U.CELULAR] AS CELULAR
+                              ,[U.PAIS] AS PAIS
+                              ,[U.CEP] AS CEP
+                              ,[U.ESTADO] AS ESTADO
+                              ,[U.CIDADE] AS CIDADE
+                              ,[U.LOGRADOURO] AS LOGRADOURO
+                              ,[U.BAIRRO] AS BAIRRO
+                              ,[U.NUMERO] AS NUMERO
+                              ,[U.COMPLEMENTO] AS COMPLEMENTO
+                              ,[P.CRP] AS COMPLEMENTO
+                              ,[P.COD_GRADUACAO] AS COMPLEMENTO
+                              ,[P.INSITUICAO_ENSINO] AS COMPLEMENTO
+                              ,[P.CURSO] AS COMPLEMENTO
+                              ,[P.ANO_INICIO] AS COMPLEMENTO
+                              ,[P.ANO_FIM] AS COMPLEMENTO
+                              ,[P.AREA_ESTUDO] AS COMPLEMENTO
+                              ,[P.DESCRICAO] AS COMPLEMENTO
+                          FROM [dbo].[TBUSUARIO] U, [dbo].[TBPROFISSIONAL] P
+                          WHEN U.CPF_CNPJ = P.CPF_CNPJ
+                          WHERE ID = {0} ", cpf));
 
 
                 psicologo = conn.QueryFirstOrDefault<Psicologo>(SQL.ToString());
-
             }
-
             return psicologo;
         }
     }
