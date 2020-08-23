@@ -30,10 +30,50 @@ namespace App.Infra.Repository
         public IEnumerable<Psicologo> GetAll()
         {
             IEnumerable<Psicologo> psicologos;
+            SQL = new StringBuilder();
 
             using (IDbConnection conn = Connection)
             {
-                psicologos = conn.Query<Psicologo>("SELECT * FROM TBPROFISSIONAL");
+                SQL.AppendLine(@"
+
+                             SELECT  U.CPFCNPJ AS CPF_CNPJ
+                              ,U.COD_PERFIL AS CodigoPerfil
+							  ,PERF.DESCRICAO as DescricaoPerfil
+                              ,U.NOME AS Nome
+                              ,U.SOBRENOME AS Sobrenome
+                              ,U.DT_NASCIMENTO AS  DataNascimento
+                              ,U.EMAIL AS EMAIL
+                              ,U.CELULAR AS Celular
+                              ,U.PAIS AS Pais
+                              ,U.CEP AS CEP
+                              ,U.ESTADO AS Estado
+                              ,U.CIDADE AS Cidade
+                              ,U.LOGRADOURO AS Logradouro
+                              ,U.BAIRRO AS Bairro
+                              ,U.NUMERO AS Numero
+                              ,U.COMPLEMENTO AS Complemento
+                              ,P.CRP AS CRP
+                              ,P.COD_GRADUACAO AS CodigoGraduacao
+							  ,GRAD.DESCRICAO AS DescricaoGraduacao
+                              ,P.INSTITUICAO_ENSINO AS InstituicaoEnsino
+                              ,P.CURSO AS Curso
+                              ,P.ANO_INICIO AS AnoInicio
+                              ,P.ANO_FIM AS AnoTermino
+                              ,P.AREA_ESTUDO AS AreaEstudo
+                              ,P.DESCRICAO AS DescricaoAtuacao
+							  
+
+                          FROM dbo.TBUSUARIO AS U
+						  INNER JOIN dbo.TBPROFISSIONAL AS P
+                          ON U.CPFCNPJ = P.CPFCNPJ
+						  INNER JOIN DBO.TBTIPOPERFIL AS PERF
+						  ON U.COD_PERFIL = PERF.COD_PERFIL
+						  INNER JOIN DBO.TBTIPOGRADUACAO AS GRAD
+						  ON P.COD_GRADUACAO = GRAD.COD_GRADUACAO
+
+                              ");
+
+                psicologos = conn.Query<Psicologo>(SQL.ToString());
             }
 
             return psicologos;
@@ -81,9 +121,10 @@ namespace App.Infra.Repository
                                 ,'{12}'
                                 ,'{13}'
                                 ,'{14}'
-                                ,'{15}'
-                                ,'{16}');
+                                ,'{15}');
+
                 SELECT CAST(SCOPE_IDENTITY() as int)"
+
                             ,psicologo.CPF_CNPJ
                             ,psicologo.Perfil
                             ,psicologo.Nome
@@ -123,12 +164,13 @@ namespace App.Infra.Repository
                                 ,'{5}'
                                 ,'{6}'
                                 ,'{7}'
-                                ,'{8}'
-                                ,'{9}');
+                                ,'{8}');
+
                 SELECT CAST(SCOPE_IDENTITY() as int)"
+
                             ,psicologo.CPF_CNPJ
                             ,psicologo.CRP
-                            ,psicologo.CodGraduacao
+                            ,psicologo.Graduacao.CodigoGraduacao
                             ,psicologo.InstituicaoEnsino
                             ,psicologo.Curso
                             ,psicologo.AnoInicio
@@ -151,30 +193,30 @@ namespace App.Infra.Repository
             SQL = new StringBuilder();
             int exeCount = 0;
 
-            using (IDbConnection conn = Connection)
-            {
+            //using (IDbConnection conn = Connection)
+            //{
 
-                SQL.AppendLine(string.Format(@" INSERIR COMANDO SQL ",
-                                    psicologo.Nome,
-                                    psicologo.Sobrenome,
-                                    psicologo.Email,
-                                    psicologo.Endereco,
-                                    psicologo.DescricaoAtuacao,
-                                    psicologo.InstituicaoEnsino,
-                                    psicologo.Abordagens,
-                                    psicologo.AnoInicio,
-                                    psicologo.AreaEstudo,
-                                    psicologo.Atendimento,
-                                    psicologo.Celular,
-                                    psicologo.CodGraduacao,
-                                    psicologo.Curso,
-                                    psicologo.DataNascimento,
-                                    psicologo.DescricaoAtuacao, psicologo.CPF_CNPJ));
+            //    SQL.AppendLine(string.Format(@" INSERIR COMANDO SQL ",
+            //                        psicologo.Nome,
+            //                        psicologo.Sobrenome,
+            //                        psicologo.Email,
+            //                        psicologo.Endereco,
+            //                        psicologo.DescricaoAtuacao,
+            //                        psicologo.InstituicaoEnsino,
+            //                        psicologo.Abordagens,
+            //                        psicologo.AnoInicio,
+            //                        psicologo.AreaEstudo,
+            //                        psicologo.Atendimento,
+            //                        psicologo.Celular,
+            //                        psicologo.CodGraduacao,
+            //                        psicologo.Curso,
+            //                        psicologo.DataNascimento,
+            //                        psicologo.DescricaoAtuacao, psicologo.CPF_CNPJ));
                                     
 
 
-                exeCount = conn.Execute(SQL.ToString());
-            }
+            //    exeCount = conn.Execute(SQL.ToString());
+            //}
 
             return exeCount;
         }
@@ -182,41 +224,100 @@ namespace App.Infra.Repository
         public Psicologo Select(string cpf)
         {
             Psicologo psicologo = null;
+            IEnumerable<Abordagens> listaAbordagem = null;
+            IEnumerable<Atendimento> listaAtendimento = null;
+
+
             SQL = new StringBuilder();
 
             using (IDbConnection conn = Connection)
             {
 
                 SQL.AppendLine(string.Format(@"
-                       SELECT  [U.CPF_CNPJ] AS CPF_CNPJ
-                              ,[U.COD_PERFIL] AS COD_PERFIL
-                              ,[U.NOME] AS NOME
-                              ,[U.SOBRENOME] AS SOBRENOME
-                              ,[U.DT_NASCIMENTO] AS  DT_NASCIMENTO
-                              ,[U.EMAIL] AS EMAIL
-                              ,[U.CELULAR] AS CELULAR
-                              ,[U.PAIS] AS PAIS
-                              ,[U.CEP] AS CEP
-                              ,[U.ESTADO] AS ESTADO
-                              ,[U.CIDADE] AS CIDADE
-                              ,[U.LOGRADOURO] AS LOGRADOURO
-                              ,[U.BAIRRO] AS BAIRRO
-                              ,[U.NUMERO] AS NUMERO
-                              ,[U.COMPLEMENTO] AS COMPLEMENTO
-                              ,[P.CRP] AS COMPLEMENTO
-                              ,[P.COD_GRADUACAO] AS COMPLEMENTO
-                              ,[P.INSITUICAO_ENSINO] AS COMPLEMENTO
-                              ,[P.CURSO] AS COMPLEMENTO
-                              ,[P.ANO_INICIO] AS COMPLEMENTO
-                              ,[P.ANO_FIM] AS COMPLEMENTO
-                              ,[P.AREA_ESTUDO] AS COMPLEMENTO
-                              ,[P.DESCRICAO] AS COMPLEMENTO
-                          FROM [dbo].[TBUSUARIO] U, [dbo].[TBPROFISSIONAL] P
-                          WHEN U.CPF_CNPJ = P.CPF_CNPJ
-                          WHERE ID = {0} ", cpf));
+
+                       SELECT  U.CPFCNPJ AS CPF_CNPJ
+                              ,U.COD_PERFIL AS CodigoPerfil
+							  ,PERF.DESCRICAO as DescricaoPerfil
+                              ,U.NOME AS Nome
+                              ,U.SOBRENOME AS Sobrenome
+                              ,U.DT_NASCIMENTO AS  DataNascimento
+                              ,U.EMAIL AS EMAIL
+                              ,U.CELULAR AS Celular
+                              ,U.PAIS AS Pais
+                              ,U.CEP AS CEP
+                              ,U.ESTADO AS Estado
+                              ,U.CIDADE AS Cidade
+                              ,U.LOGRADOURO AS Logradouro
+                              ,U.BAIRRO AS Bairro
+                              ,U.NUMERO AS Numero
+                              ,U.COMPLEMENTO AS Complemento
+                              ,P.CRP AS CRP
+                              ,P.COD_GRADUACAO AS CodigoGraduacao
+							  ,GRAD.DESCRICAO AS DescricaoGraduacao
+                              ,P.INSTITUICAO_ENSINO AS InstituicaoEnsino
+                              ,P.CURSO AS Curso
+                              ,P.ANO_INICIO AS AnoInicio
+                              ,P.ANO_FIM AS AnoTermino
+                              ,P.AREA_ESTUDO AS AreaEstudo
+                              ,P.DESCRICAO AS DescricaoAtuacao
+							  
+
+                          FROM dbo.TBUSUARIO AS U
+						  INNER JOIN dbo.TBPROFISSIONAL AS P
+                          ON U.CPFCNPJ = P.CPFCNPJ
+						  INNER JOIN DBO.TBTIPOPERFIL AS PERF
+						  ON U.COD_PERFIL = PERF.COD_PERFIL
+						  INNER JOIN DBO.TBTIPOGRADUACAO AS GRAD
+						  ON P.COD_GRADUACAO = GRAD.COD_GRADUACAO
+                          WHERE U.CPFCNPJ = {0} ", cpf));
 
 
                 psicologo = conn.QueryFirstOrDefault<Psicologo>(SQL.ToString());
+
+                //Se retornou psicologo, busco as informações de atendimento e abordagem
+                if (psicologo != null)
+                {
+
+                    SQL = new StringBuilder();
+
+                    SQL.AppendLine(string.Format(@"
+
+                                   SELECT TIPO_ABORD.COD_ABORDAGEM AS CodigoAbordagem
+	                                      ,TIPO_ABORD.DESCRICAO AS DescricaoAbordagem
+                                    FROM TBTIPOABORD AS TIPO_ABORD
+                                    INNER JOIN TBPROF_TIPOABORD AS PROF_TIPO_ABORD
+                                    ON TIPO_ABORD.COD_ABORDAGEM = PROF_TIPO_ABORD.COD_ABORDAGEM
+                                    WHERE PROF_TIPO_ABORD.CRP = {0}",psicologo.CRP));
+
+                    listaAbordagem = conn.Query<Abordagens>(SQL.ToString());
+
+
+                    SQL = new StringBuilder();
+
+                    SQL.AppendLine(string.Format(@"
+
+                                   SELECT TIPO_ATEND.COD_ATENDIMENTO AS CodigoAtendimento
+	                                      ,TIPO_ATEND.DESCRICAO AS DescricaoAtendimento
+                                    FROM TBTIPOATEND AS TIPO_ATEND
+                                    INNER JOIN TBPROF_TIPOATEND AS PROF_TIPO_ATEND
+                                    ON PROF_TIPO_ATEND.COD_ATENDIMENTO = PROF_TIPO_ATEND.COD_ATENDIMENTO
+                                    WHERE PROF_TIPO_ATEND.CRP =  {0}", psicologo.CRP));
+
+                    listaAtendimento = conn.Query<Atendimento>(SQL.ToString());
+
+                    
+                    if (listaAbordagem.AsList().Count > 0)
+                    {
+                        psicologo.Abordagens.AsList().AddRange(listaAbordagem);
+                    }
+
+                    if (listaAtendimento.AsList().Count > 0)
+                    {
+                        psicologo.Atendimentos.AsList().AddRange(listaAtendimento);
+                    }
+
+                }
+
             }
             return psicologo;
         }

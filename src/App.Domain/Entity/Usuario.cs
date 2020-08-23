@@ -19,8 +19,8 @@ namespace App.Domain.Entity
         /// <summary>
         /// 
         /// </summary>
-        [Required]
-        public string Perfil { get; set; }
+        //[Required]
+        //public string Perfil { get; set; }
 
         /// <summary>
         /// 
@@ -67,6 +67,9 @@ namespace App.Domain.Entity
         [Required(ErrorMessage = "Informe a senha!")]
         public string Senha { get; set; }
 
+
+        [Required]
+        public Perfil Perfil { get; set; }
 
     }
 }

@@ -6,9 +6,9 @@ namespace App.Domain.Entity
 {
     public  class Abordagens
     {
-        public int Codigo { get; set; }
+        public int CodigoAbordagem { get; set; }
 
-        public string Descricao { get; set; }
+        public string DescricaoAbordagem { get; set; }
 
     }
 }

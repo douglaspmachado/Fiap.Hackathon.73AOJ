@@ -7,9 +7,9 @@ namespace App.Domain.Entity
     public class Atendimento
     {
 
-        public int Codigo { get; set; }
+        public int CodigoAtendimento { get; set; }
 
-        public string Descricao { get; set; }
+        public string DescricaoAtendimento { get; set; }
 
     }
 }

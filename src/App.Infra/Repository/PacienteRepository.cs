@@ -70,9 +70,11 @@ namespace App.Infra.Repository
                                 ,'{12}'
                                 ,'{13}'
                                 ,'{14}'
-                                ,'{15}'
-                                ,'{16}');
+                                ,'{15}');
+
                 SELECT CAST(SCOPE_IDENTITY() as int)"
+
+
                             ,usuario.CPF_CNPJ
                             ,usuario.Perfil
                             ,usuario.Nome
@@ -103,19 +105,19 @@ namespace App.Infra.Repository
             SQL = new StringBuilder();
             int exeCount = 0;
 
-            using (IDbConnection conn = Connection)
-            {
+            //using (IDbConnection conn = Connection)
+            //{
 
-                SQL.AppendLine(string.Format(@" INCLUIR COMANDO SQL ", usuario.Nome,
-                                    usuario.Sobrenome,
-                                    usuario.Email,
-                                    usuario.DataNascimento,
-                                    usuario.Celular,
-                                    usuario.Endereco, usuario.CPF_CNPJ));
+            //    SQL.AppendLine(string.Format(@" INCLUIR COMANDO SQL ", usuario.Nome,
+            //                        usuario.Sobrenome,
+            //                        usuario.Email,
+            //                        usuario.DataNascimento,
+            //                        usuario.Celular,
+            //                        usuario.Endereco, usuario.CPF_CNPJ));
 
 
-                exeCount = conn.Execute(SQL.ToString());
-            }
+            //    exeCount = conn.Execute(SQL.ToString());
+            //}
 
             return exeCount;
         }
@@ -130,23 +132,23 @@ namespace App.Infra.Repository
             {
 
                 SQL.AppendLine(string.Format(@"
-                       SELECT  [CPF_CNPJ] AS CPF_CNPJ
+                       SELECT  [CPFCNPJ] AS CPF_CNPJ
                               ,[COD_PERFIL] AS COD_PERFIL
-                              ,[NOME] AS NOME
-                              ,[SOBRENOME] AS SOBRENOME
-                              ,[DT_NASCIMENTO] AS  DT_NASCIMENTO
-                              ,[EMAIL] AS EMAIL
-                              ,[CELULAR] AS CELULAR
-                              ,[PAIS] AS PAIS
+                              ,[NOME] AS Nome
+                              ,[SOBRENOME] AS Sobrenome
+                              ,[DT_NASCIMENTO] AS  DataNascimento
+                              ,[EMAIL] AS Email
+                              ,[CELULAR] AS Celular
+                              ,[PAIS] AS Pais
                               ,[CEP] AS CEP
-                              ,[ESTADO] AS ESTADO
-                              ,[CIDADE] AS CIDADE
-                              ,[LOGRADOURO] AS LOGRADOURO
-                              ,[BAIRRO] AS BAIRRO
-                              ,[NUMERO] AS NUMERO
-                              ,[COMPLEMENTO] AS COMPLEMENTO
+                              ,[ESTADO] AS Estado
+                              ,[CIDADE] AS Cidade
+                              ,[LOGRADOURO] AS Logradouro
+                              ,[BAIRRO] AS Bairro
+                              ,[NUMERO] AS Numero
+                              ,[COMPLEMENTO] AS Complemento
                           FROM [dbo].[TBUSUARIO]
-                          WHERE ID = {0} ", cpf));
+                          WHERE CPFCNPJ = {0} ", cpf));
 
 
                 usuario = conn.QueryFirstOrDefault<Usuario>(SQL.ToString());

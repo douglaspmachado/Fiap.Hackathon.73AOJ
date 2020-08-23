@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace App.Domain.Entity
 {
@@ -52,17 +53,17 @@ namespace App.Domain.Entity
         [Required]
         public string DescricaoAtuacao { get; set; }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        [Required]
-        public Abordagens Abordagens { get; set; }
+        
+        public IEnumerable<Abordagens> Abordagens { get; set; }
+
+
+        public IEnumerable<Atendimento> Atendimentos { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        [Required]
-        public Atendimento Atendimento { get; set; }
+       
+        public Graduacao Graduacao { get; set; }
 
 
 
