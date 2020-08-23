@@ -1,645 +1,190 @@
-﻿<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="description" content="">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-
-    <!-- Title -->
-    <title>PlayerShares - eSports action!</title>
-
-    <!-- Favicon -->
-    <link rel="icon" href="img/core-img/favicon.ico">
-
-    <!-- Stylesheet -->
-    <link rel="stylesheet" href="style.css">
-
+    <title>medical</title>
+    <link rel="icon" href="img/favicon.png">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- animate CSS -->
+    <link rel="stylesheet" href="css/animate.css">
+    <!-- owl carousel CSS -->
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <!-- themify CSS -->
+    <link rel="stylesheet" href="css/themify-icons.css">
+    <!-- flaticon CSS -->
+    <link rel="stylesheet" href="css/flaticon.css">
+    <!-- magnific popup CSS -->
+    <link rel="stylesheet" href="css/magnific-popup.css">
+    <!-- nice select CSS -->
+    <link rel="stylesheet" href="css/nice-select.css">
+    <!-- swiper CSS -->
+    <link rel="stylesheet" href="css/slick.css">
+    <!-- style CSS -->
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-    <!-- Preloader -->
-    <div class="preloader d-flex align-items-center justify-content-center">
-        <div class="spinner">
-            <div class="bounce1"></div>
-            <div class="bounce2"></div>
-            <div class="bounce3"></div>
-        </div>
-    </div>
+    <!--::header part start::-->
+    <header class="main_menu home_menu">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-12">
+                    <nav class="navbar navbar-expand-lg navbar-light">
+                        <a class="navbar-brand" href="index.html"> <img src="img/logo.png" alt="logo"> </a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse"
+                            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
 
-    <!-- ##### Header Area Start ##### -->
-    <header class="header-area wow fadeInDown" data-wow-delay="500ms">
-        <!-- Top Header Area -->
-        <div class="top-header-area">
-            <div class="container h-100">
-                <div class="row h-100 align-items-center">
-                    <div class="col-12 d-flex align-items-center justify-content-between">
-                        <!-- Logo Area -->
-                        <div class="logo">
-                            @*<a href="/Home"><h2>PlayerShares.com</h2></a>*@
-                            <a href="/Home"><img src="~/img/logo_fundo_transparente.png" style="width:290px;height:80px;"/></a>
-                        </div>
+                        <div class="collapse navbar-collapse main-menu-item justify-content-end"
+                            id="navbarSupportedContent">
+                            <ul class="navbar-nav align-items-center">
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="index.html">Home</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="about.html">about</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="Doctor.html">Doctors</a>
+                                </li>
 
-                        <!-- Search & Login Area -->
-                        <div class="search-login-area d-flex align-items-center">
-                            <!-- Top Search Area -->
-                            <div class="top-search-area">
-                                <form action="#" method="post">
-                                    <input type="search" name="top-search" id="topSearch" placeholder="Buscar">
-                                    <button type="submit" class="btn"><i class="fa fa-search"></i></button>
-                                </form>
-                            </div>
-                            <!-- Login Area -->
-                            <div class="login-area">
-                                <a href="Cadastro"><span>Login / Cadastro</span> <i class="fa fa-lock" aria-hidden="true"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="blog.html" id="navbarDropdown"
+                                        role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Pages
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="services.html">services</a>
+                                        <a class="dropdown-item" href="elements.html">Elements</a>
+                                    </div>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="blog.html" id="navbarDropdown_1"
+                                        role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        blog
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown_1">
+                                        <a class="dropdown-item" href="blog.html">blog</a>
+                                        <a class="dropdown-item" href="single-blog.html">Single blog</a>
+                                    </div>
+                                </li>
 
-        <!-- Navbar Area -->
-        <div class="egames-main-menu" id="sticker">
-            <div class="classy-nav-container breakpoint-off">
-                <div class="container">
-                    <!-- Menu -->
-                    <nav class="classy-navbar justify-content-between" id="egamesNav">
-
-                        <!-- Navbar Toggler -->
-                        <div class="classy-navbar-toggler">
-                            <span class="navbarToggler"><span></span><span></span><span></span></span>
-                        </div>
-
-                        <!-- Menu -->
-                        <div class="classy-menu">
-
-                            <!-- Close Button -->
-                            <div class="classycloseIcon">
-                                <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
-                            </div>
-
-                            <!-- Nav Start -->
-                            <div class="classynav">
-                                <ul>
-                                    <li><a href="/Home">Início</a></li>
-                                    <li><a href="/Investidores">Investidores</a></li>                                    
-                                    <li><a href="/Jogadores">Jogadores</a></li>
-                                    <li><a href="/Torneio">Torneios</a></li>                                    
-                                </ul>
-                            </div>
-                            <!-- Nav End -->
-                        </div>
-						
-                        <!-- Top Social Info -->
-                        <div class="top-social-info">
-                            <a href="#" data-toggle="tooltip" data-placement="top" title="Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                            <a href="#" data-toggle="tooltip" data-placement="top" title="Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                            <a href="#" data-toggle="tooltip" data-placement="top" title="Dribbble"><i class="fa fa-instagram" aria-hidden="true"></i></a>                          
+                                <li class="nav-item">
+                                    <a class="nav-link" href="contact.html">Contact</a>
+                                </li>
+                                <li class="d-none d-lg-block">
+                                    <a class="btn_1" href="#">learn more</a>
+                                </li>
+                            </ul>
                         </div>
                     </nav>
                 </div>
             </div>
         </div>
     </header>
-    <!-- ##### Header Area End ##### -->
+    <!-- Header part end-->
 
-    <!-- ##### Hero Area Start ##### -->
-    <div class="hero-area">
-        <!-- Hero Post Slides -->
-        <div class="hero-post-slides owl-carousel">
-
-            <!-- Single Slide -->
-            <div class="single-slide bg-img bg-overlay" style="background-image: url(img/bg-img/70.jpg);">
-                <!-- Blog Content -->
-                <div class="container h-100">
-                    <div class="row h-100 align-items-center">
-                        <div class="col-12 col-lg-9">
-                            <div class="blog-content" data-animation="fadeInUp" data-delay="100ms">
-                                <h2 data-animation="fadeInUp" data-delay="400ms">O poder dos jogos!</h2>
-                                <p data-animation="fadeInUp" data-delay="700ms">Não é de hoje que os games fazem parte da vida de milhões de pessoas ao redor do mundo. Sabemos que o termo "hobby" foi deixado para trás, e hoje, a dedicação e os investimentos levam jogadores desta modalidade ao profissionalismo. Este mercado já é realidade e pensando nisso a PlayerShares tem o intuito de conectar você, que tem este objetivo. Junte-se a nós!</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Single Slide -->
-            <div class="single-slide bg-img bg-overlay" style="background-image: url(img/bg-img/71.jpg);">
-                <!-- Blog Content -->
-                <div class="container h-100">
-                    <div class="row h-100 align-items-center">
-                        <div class="col-12 col-lg-9">
-                            <div class="blog-content" data-animation="fadeInUp" data-delay="100ms">
-                                <h2 data-animation="fadeInUp" data-delay="400ms">Jogadores e Investidores!</h2>
-                                <p data-animation="fadeInUp" data-delay="700ms">Cadastre-se, mostre as suas habilidades e solicite investimento para disputar os maiores torneios de sua modalidade em busca da profissionalização. Diversos investidores estarão aguardando para te conhecer, e juntos, encarar esta jornada.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-    <!-- ##### Hero Area End ##### -->
-
-    <!-- ##### Monthly Picks Area Start ##### -->
-    <section class="monthly-picks-area section-padding-100 bg-pattern">
+    <!-- banner part start-->
+    <section class="banner_part">
         <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="left-right-pattern"></div>
-                </div>
-            </div>
-        </div>
-
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <!-- Title -->
-                    <h2 class="section-title mb-70 wow fadeInUp" data-wow-delay="100ms">Os melhores do mês</h2>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-12">
-                    <ul class="nav nav-tabs wow fadeInUp" data-wow-delay="300ms" id="myTab" role="tablist">
-                        <li class="nav-item">
-                            <a class="nav-link active" id="popular-tab" data-toggle="tab" href="#popular" role="tab" aria-controls="popular" aria-selected="true">Jogos Populares</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="latest-tab" data-toggle="tab" href="#latest" role="tab" aria-controls="latest" aria-selected="false">Top Jogadores</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="editor-tab" data-toggle="tab" href="#editor" role="tab" aria-controls="editor" aria-selected="false">Top Investidores</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <div class="tab-content wow fadeInUp" data-wow-delay="500ms" id="myTabContent">
-            <div class="tab-pane fade show active" id="popular" role="tabpanel" aria-labelledby="popular-tab">
-                <!-- Popular Games Slideshow -->
-                <div class="popular-games-slideshow owl-carousel">
-
-                    <!-- Single Games -->
-                    <div class="single-games-slide">
-                        <img src="img/bg-img/50.jpg" alt="">
-                        <div class="slide-text">
-                            <a href="#" class="game-title">Grand Theft Auto V</a>
-                            <div class="meta-data">
-                                <a href="#">Players</a>
-                                <a href="#">1257</a>
+            <div class="row align-items-center">
+                <div class="col-lg-6 col-xl-6">
+                    <div class="banner_text">
+                        <div class="banner_text_iner">
+                            <h1>Bringing the future
+                                of healthcare</h1>
+                            <p>Deep created replenish herb without night fruit day earth evening Called his
+                                green were they're fruitful to over Sea bearing sixth Earth face. Them lesser
+                                great you'll second </p>
+                            <a href="#" class="btn_2">Make an appointment</a>
+                            <div class="banner_item">
+                                <div class="single_item">
+                                    <img src="img/icon/banner_1.svg" alt="">
+                                    <h5>Emergency Cases</h5>
+                                </div>
+                                <div class="single_item">
+                                    <img src="img/icon/banner_2.svg" alt="">
+                                    <h5>Easy Appointment</h5>
+                                </div>
+                                <div class="single_item">
+                                    <img src="img/icon/banner_3.svg" alt="">
+                                    <h5>Qualfied Doctores</h5>
+                                </div>
                             </div>
                         </div>
                     </div>
-
-                    <!-- Single Games -->
-                    <div class="single-games-slide">
-                        <img src="img/bg-img/51.jpg" alt="">
-                        <div class="slide-text">
-                            <a href="#" class="game-title">Doom</a>
-                            <div class="meta-data">
-                                <a href="#">Players</a>
-                                <a href="#">3576</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Single Games -->
-                    <div class="single-games-slide">
-                        <img src="img/bg-img/53.jpg" alt="">
-                        <div class="slide-text">
-                            <a href="#" class="game-title">Bloodborne</a>
-                            <div class="meta-data">
-                                <a href="#">Players</a>
-                                <a href="#">2586</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Single Games -->
-                    <div class="single-games-slide">
-                        <img src="img/bg-img/54.jpg" alt="">
-                        <div class="slide-text">
-                            <a href="#" class="game-title">Persona 5</a>
-                            <div class="meta-data">
-                                <a href="#">Players</a>
-                                <a href="#">154</a>
-                            </div>
-                        </div>
-                    </div>
-					
-					  <!-- Single Games -->
-                    <div class="single-games-slide">
-                        <img src="img/bg-img/52.jpg" alt="">
-                        <div class="slide-text">
-                            <a href="#" class="game-title">God of War</a>
-                            <div class="meta-data">
-                                <a href="#">Players</a>
-                                <a href="#">1200</a>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-            <div class="tab-pane fade" id="latest" role="tabpanel" aria-labelledby="latest-tab">
-                <!-- Latest Games Slideshow -->
-                <div class="latest-games-slideshow owl-carousel">
-
-                    <!-- Single Games -->
-                    <div class="single-games-slide">
-                        <img src="img/bg-img/50.jpg" alt="">
-                        <div class="slide-text">
-                            <a href="#" class="game-title">Grand Theft Auto V</a>
-                            <div class="meta-data">
-                                <a href="#">Players: 9.1/10</a>
-                                <a href="#">Action</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Single Games -->
-                    <div class="single-games-slide">
-                        <img src="img/bg-img/51.jpg" alt="">
-                        <div class="slide-text">
-                            <a href="#" class="game-title">Doom</a>
-                            <div class="meta-data">
-                                <a href="#">User: 9.1/10</a>
-                                <a href="#">Adventure</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Single Games -->
-                    <div class="single-games-slide">
-                        <img src="img/bg-img/52.jpg" alt="">
-                        <div class="slide-text">
-                            <a href="#" class="game-title">God of War</a>
-                            <div class="meta-data">
-                                <a href="#">User: 9.1/10</a>
-                                <a href="#">Action</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Single Games -->
-                    <div class="single-games-slide">
-                        <img src="img/bg-img/53.jpg" alt="">
-                        <div class="slide-text">
-                            <a href="#" class="game-title">Bloodborne</a>
-                            <div class="meta-data">
-                                <a href="#">User: 9.1/10</a>
-                                <a href="#">Adventure</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Single Games -->
-                    <div class="single-games-slide">
-                        <img src="img/bg-img/54.jpg" alt="">
-                        <div class="slide-text">
-                            <a href="#" class="game-title">Persona 5</a>
-                            <div class="meta-data">
-                                <a href="#">User: 9.1/10</a>
-                                <a href="#">Action</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Single Games -->
-                    <div class="single-games-slide">
-                        <img src="img/bg-img/52.jpg" alt="">
-                        <div class="slide-text">
-                            <a href="#" class="game-title">God of War</a>
-                            <div class="meta-data">
-                                <a href="#">User: 9.1/10</a>
-                                <a href="#">Action</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Single Games -->
-                    <div class="single-games-slide">
-                        <img src="img/bg-img/53.jpg" alt="">
-                        <div class="slide-text">
-                            <a href="#" class="game-title">Bloodborne</a>
-                            <div class="meta-data">
-                                <a href="#">User: 9.1/10</a>
-                                <a href="#">Adventure</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Single Games -->
-                    <div class="single-games-slide">
-                        <img src="img/bg-img/54.jpg" alt="">
-                        <div class="slide-text">
-                            <a href="#" class="game-title">Persona 5</a>
-                            <div class="meta-data">
-                                <a href="#">User: 9.1/10</a>
-                                <a href="#">Action</a>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-            <div class="tab-pane fade" id="editor" role="tabpanel" aria-labelledby="editor-tab">
-                <!-- Editor Games Slideshow -->
-                <div class="editor-games-slideshow owl-carousel">
-
-                    <!-- Single Games -->
-                    <div class="single-games-slide">
-                        <img src="img/bg-img/50.jpg" alt="">
-                        <div class="slide-text">
-                            <a href="#" class="game-title">Grand Theft Auto V</a>
-                            <div class="meta-data">
-                                <a href="#">User: 9.1/10</a>
-                                <a href="#">Action</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Single Games -->
-                    <div class="single-games-slide">
-                        <img src="img/bg-img/51.jpg" alt="">
-                        <div class="slide-text">
-                            <a href="#" class="game-title">Doom</a>
-                            <div class="meta-data">
-                                <a href="#">User: 9.1/10</a>
-                                <a href="#">Adventure</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Single Games -->
-                    <div class="single-games-slide">
-                        <img src="img/bg-img/52.jpg" alt="">
-                        <div class="slide-text">
-                            <a href="#" class="game-title">God of War</a>
-                            <div class="meta-data">
-                                <a href="#">User: 9.1/10</a>
-                                <a href="#">Action</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Single Games -->
-                    <div class="single-games-slide">
-                        <img src="img/bg-img/53.jpg" alt="">
-                        <div class="slide-text">
-                            <a href="#" class="game-title">Bloodborne</a>
-                            <div class="meta-data">
-                                <a href="#">User: 9.1/10</a>
-                                <a href="#">Adventure</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Single Games -->
-                    <div class="single-games-slide">
-                        <img src="img/bg-img/54.jpg" alt="">
-                        <div class="slide-text">
-                            <a href="#" class="game-title">Persona 5</a>
-                            <div class="meta-data">
-                                <a href="#">User: 9.1/10</a>
-                                <a href="#">Action</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Single Games -->
-                    <div class="single-games-slide">
-                        <img src="img/bg-img/52.jpg" alt="">
-                        <div class="slide-text">
-                            <a href="#" class="game-title">God of War</a>
-                            <div class="meta-data">
-                                <a href="#">User: 9.1/10</a>
-                                <a href="#">Action</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Single Games -->
-                    <div class="single-games-slide">
-                        <img src="img/bg-img/53.jpg" alt="">
-                        <div class="slide-text">
-                            <a href="#" class="game-title">Bloodborne</a>
-                            <div class="meta-data">
-                                <a href="#">User: 9.1/10</a>
-                                <a href="#">Adventure</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Single Games -->
-                    <div class="single-games-slide">
-                        <img src="img/bg-img/54.jpg" alt="">
-                        <div class="slide-text">
-                            <a href="#" class="game-title">Persona 5</a>
-                            <div class="meta-data">
-                                <a href="#">User: 9.1/10</a>
-                                <a href="#">Action</a>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
             </div>
         </div>
     </section>
-    <!-- ##### Monthly Picks Area End ##### -->
+    <!-- banner part start-->
 
-    <!-- ##### Video Area Start ##### -->
-    <div class="egames-video-area section-padding-100 bg-pattern2">
+    <!-- feature_part start-->
+    <section class="feature_part padding_top">
         <div class="container">
-            <div class="row no-gutters">
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="egames-nav-btn">
-                        <div class="nav flex-column" id="video-tab" role="tablist" aria-orientation="vertical">
-                            <a class="nav-link active" id="video1" data-toggle="pill" href="#video-1" role="tab" aria-controls="video-1" aria-selected="true">
-                                <!-- Single Video Widget -->
-                                <div class="single-video-widget d-flex wow fadeInUp" data-wow-delay="100ms">
-                                    <div class="video-thumbnail">
-                                        <img src="img/bg-img/14.jpg" alt="">
-                                    </div>
-                                    <div class="video-text">
-                                        <p class="video-title mb-0">Assemble Your Squad and Join the Battle</p>
-                                        <span>Nintendo Wii, PS4, XBox 360</span>
-                                    </div>
-                                    <div class="video-rating">8.3/10</div>
-                                </div>
-                            </a>
-
-                            <a class="nav-link" id="video2" data-toggle="pill" href="#video-2" role="tab" aria-controls="video-2" aria-selected="false">
-                                <!-- Single Video Widget -->
-                                <div class="single-video-widget d-flex wow fadeInUp" data-wow-delay="200ms">
-                                    <div class="video-thumbnail">
-                                        <img src="img/bg-img/15.jpg" alt="">
-                                    </div>
-                                    <div class="video-text">
-                                        <p class="video-title mb-0">Tips to improve your game</p>
-                                        <span>Nintendo Wii, PS4, XBox 360</span>
-                                    </div>
-                                    <div class="video-rating">8.3/10</div>
-                                </div>
-                            </a>
-
-                            <a class="nav-link" id="video3" data-toggle="pill" href="#video-3" role="tab" aria-controls="video-3" aria-selected="false">
-                                <!-- Single Video Widget -->
-                                <div class="single-video-widget d-flex wow fadeInUp" data-wow-delay="300ms">
-                                    <div class="video-thumbnail">
-                                        <img src="img/bg-img/16.jpg" alt="">
-                                    </div>
-                                    <div class="video-text">
-                                        <p class="video-title mb-0">Game reviews: the best of 2018</p>
-                                        <span>Nintendo Wii, PS4, XBox 360</span>
-                                    </div>
-                                    <div class="video-rating">8.3/10</div>
-                                </div>
-                            </a>
-
-                            <a class="nav-link" id="video4" data-toggle="pill" href="#video-4" role="tab" aria-controls="video-4" aria-selected="false">
-                                <!-- Single Video Widget -->
-                                <div class="single-video-widget d-flex wow fadeInUp" data-wow-delay="400ms">
-                                    <div class="video-thumbnail">
-                                        <img src="img/bg-img/17.jpg" alt="">
-                                    </div>
-                                    <div class="video-text">
-                                        <p class="video-title mb-0">Assemble Your Squad and Join the Battle</p>
-                                        <span>Nintendo Wii, PS4, XBox 360</span>
-                                    </div>
-                                    <div class="video-rating">8.3/10</div>
-                                </div>
-                            </a>
-
-                            <a class="nav-link" id="video5" data-toggle="pill" href="#video-5" role="tab" aria-controls="video-5" aria-selected="false">
-                                <!-- Single Video Widget -->
-                                <div class="single-video-widget d-flex wow fadeInUp" data-wow-delay="500ms">
-                                    <div class="video-thumbnail">
-                                        <img src="img/bg-img/18.jpg" alt="">
-                                    </div>
-                                    <div class="video-text">
-                                        <p class="video-title mb-0">Tips to improve your game</p>
-                                        <span>Nintendo Wii, PS4, XBox 360</span>
-                                    </div>
-                                    <div class="video-rating">8.3/10</div>
-                                </div>
-                            </a>
-
-                            <a class="nav-link" id="video6" data-toggle="pill" href="#video-6" role="tab" aria-controls="video-6" aria-selected="false">
-                                <!-- Single Video Widget -->
-                                <div class="single-video-widget d-flex wow fadeInUp" data-wow-delay="600ms">
-                                    <div class="video-thumbnail">
-                                        <img src="img/bg-img/14.jpg" alt="">
-                                    </div>
-                                    <div class="video-text">
-                                        <p class="video-title mb-0">Game reviews: the best of 2018</p>
-                                        <span>Nintendo Wii, PS4, XBox 360</span>
-                                    </div>
-                                    <div class="video-rating">8.3/10</div>
-                                </div>
-                            </a>
-
-                            <a class="nav-link" id="video7" data-toggle="pill" href="#video-7" role="tab" aria-controls="video-7" aria-selected="false">
-                                <!-- Single Video Widget -->
-                                <div class="single-video-widget d-flex wow fadeInUp" data-wow-delay="700ms">
-                                    <div class="video-thumbnail">
-                                        <img src="img/bg-img/15.jpg" alt="">
-                                    </div>
-                                    <div class="video-text">
-                                        <p class="video-title mb-0">Tips to improve your game</p>
-                                        <span>Nintendo Wii, PS4, XBox 360</span>
-                                    </div>
-                                    <div class="video-rating">8.3/10</div>
-                                </div>
-                            </a>
-
-                            <a class="nav-link" id="video8" data-toggle="pill" href="#video-8" role="tab" aria-controls="video-8" aria-selected="false">
-                                <!-- Single Video Widget -->
-                                <div class="single-video-widget d-flex wow fadeInUp" data-wow-delay="800ms">
-                                    <div class="video-thumbnail">
-                                        <img src="img/bg-img/16.jpg" alt="">
-                                    </div>
-                                    <div class="video-text">
-                                        <p class="video-title mb-0">Game reviews: the best of 2018</p>
-                                        <span>Nintendo Wii, PS4, XBox 360</span>
-                                    </div>
-                                    <div class="video-rating">8.3/10</div>
-                                </div>
-                            </a>
-                        </div>
+            <div class="row">
+                <div class="col-xl-4 col-md-4 align-self-center">
+                    <div class="single_feature_text ">
+                        <h2>Provide Special
+                            Services</h2>
+                        <p>Third beast two she'd multiply they're form he above do Replenish days said
+                            set doesn't can't subdue air herb lesser dominion saying fruitful given
+                            fifth winged Third beast two she'd multiply they're form he above their
+                            Replenish days said set doesn can'which.</p>
+                        <a href="#" class="btn_2">More service</a>
                     </div>
                 </div>
-
-                <div class="col-12 col-md-6 col-lg-8">
-                    <div class="tab-content" id="video-tabContent">
-                        <div class="tab-pane fade show active" id="video-1" role="tabpanel" aria-labelledby="video1">
-                            <div class="video-playground bg-img" style="background-image: url(img/bg-img/45.jpg);">
-                                <!-- Play Button -->
-                                <div class="play-btn">
-                                    <a href="https://www.youtube.com/watch?v=7HKoqNJtMTQ" class="play-button"><img src="img/core-img/play.png" alt=""></a>
+                <div class="col-lg-8 col-md-8">
+                    <div class="feature_item">
+                        <div class="row">
+                            <div class="col-lg-6 col-sm-6">
+                                <div class="single_feature">
+                                    <div class="single_feature_part">
+                                        <span class="single_feature_icon"><img src="img/icon/feature_1.svg"
+                                                alt=""></span>
+                                        <h4>Better Future</h4>
+                                        <p>Darkness multiply rule Which from without life creature blessed
+                                            give moveth moveth seas make day which divided our have.</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="tab-pane fade" id="video-2" role="tabpanel" aria-labelledby="video2">
-                            <div class="video-playground bg-img" style="background-image: url(img/bg-img/46.jpg);">
-                                <!-- Play Button -->
-                                <div class="play-btn">
-                                    <a href="https://www.youtube.com/watch?v=7HKoqNJtMTQ" class="play-button"><img src="img/core-img/play.png" alt=""></a>
+                            <div class="col-lg-6 col-sm-6">
+                                <div class="single_feature">
+                                    <div class="single_feature_part">
+                                        <span class="single_feature_icon"><img src="img/icon/feature_2.svg"
+                                                alt=""></span>
+                                        <h4>Better Future</h4>
+                                        <p>Darkness multiply rule Which from without life creature blessed
+                                            give moveth moveth seas make day which divided our have.</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="tab-pane fade" id="video-3" role="tabpanel" aria-labelledby="video3">
-                            <div class="video-playground bg-img" style="background-image: url(img/bg-img/47.jpg);">
-                                <!-- Play Button -->
-                                <div class="play-btn">
-                                    <a href="https://www.youtube.com/watch?v=7HKoqNJtMTQ" class="play-button"><img src="img/core-img/play.png" alt=""></a>
+                            <div class="col-lg-6 col-sm-6">
+                                <div class="single_feature">
+                                    <div class="single_feature_part">
+                                        <span class="single_feature_icon"><img src="img/icon/feature_2.svg"
+                                                alt=""></span>
+                                        <h4>Better Future</h4>
+                                        <p>Darkness multiply rule Which from without life creature blessed
+                                            give moveth moveth seas make day which divided our have.</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="tab-pane fade" id="video-4" role="tabpanel" aria-labelledby="video4">
-                            <div class="video-playground bg-img" style="background-image: url(img/bg-img/48.jpg);">
-                                <!-- Play Button -->
-                                <div class="play-btn">
-                                    <a href="https://www.youtube.com/watch?v=7HKoqNJtMTQ" class="play-button"><img src="img/core-img/play.png" alt=""></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tab-pane fade" id="video-5" role="tabpanel" aria-labelledby="video5">
-                            <div class="video-playground bg-img" style="background-image: url(img/bg-img/49.jpg);">
-                                <!-- Play Button -->
-                                <div class="play-btn">
-                                    <a href="https://www.youtube.com/watch?v=7HKoqNJtMTQ" class="play-button"><img src="img/core-img/play.png" alt=""></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tab-pane fade" id="video-6" role="tabpanel" aria-labelledby="video6">
-                            <div class="video-playground bg-img" style="background-image: url(img/bg-img/45.jpg);">
-                                <!-- Play Button -->
-                                <div class="play-btn">
-                                    <a href="https://www.youtube.com/watch?v=7HKoqNJtMTQ" class="play-button"><img src="img/core-img/play.png" alt=""></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tab-pane fade" id="video-7" role="tabpanel" aria-labelledby="video7">
-                            <div class="video-playground bg-img" style="background-image: url(img/bg-img/46.jpg);">
-                                <!-- Play Button -->
-                                <div class="play-btn">
-                                    <a href="https://www.youtube.com/watch?v=7HKoqNJtMTQ" class="play-button"><img src="img/core-img/play.png" alt=""></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tab-pane fade" id="video-8" role="tabpanel" aria-labelledby="video8">
-                            <div class="video-playground bg-img" style="background-image: url(img/bg-img/47.jpg);">
-                                <!-- Play Button -->
-                                <div class="play-btn">
-                                    <a href="https://www.youtube.com/watch?v=7HKoqNJtMTQ" class="play-button"><img src="img/core-img/play.png" alt=""></a>
+                            <div class="col-lg-6 col-sm-6">
+                                <div class="single_feature">
+                                    <div class="single_feature_part">
+                                        <span class="single_feature_icon"><img src="img/icon/feature_1.svg"
+                                                alt=""></span>
+                                        <h4>Better Future</h4>
+                                        <p>Darkness multiply rule Which from without life creature blessed
+                                            give moveth moveth seas make day which divided our have.</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -647,43 +192,484 @@
                 </div>
             </div>
         </div>
-    </div>
-    <!-- ##### Video Area End ##### -->
+    </section>
+    <!-- feature_part start-->
 
-   
+    <!-- our_ability part start-->
+    <section class="our_ability section_padding">
+        <div class="container">
+            <div class="row justify-content-between align-items-center">
+                <div class="col-md-6 col-lg-6">
+                    <div class="our_ability_img">
+                        <img src="img/ability_img.png" alt="">
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-5">
+                    <div class="our_ability_member_text">
+                        <h2>Our Patients
+                            Are at the Centre of
+                            Everything We Do</h2>
+                        <p>Kind lesser bring said midst they're created signs made the beginni years
+                            created Beast upon whales herb seas evening she'd day green dominion
+                            evening in moved have fifth in won't in darkness fruitful god behold
+                            whos without bring created creature.</p>
+                        <ul>
+                            <li><span class="ti-mouse"></span>Modern Technology</li>
+                            <li><span class="ti-heart-broken"></span>Worldclass Facilities</li>
+                            <li><span class="ti-package"></span>Experienced Nurse</li>
+                            <li><span class="ti-headphone-alt"></span>24 Hours Support</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- our_ability part end-->
 
-    <!-- ##### Footer Area Start ##### -->
+    <!-- top_service part start-->
+    <section class="top_service our_ability padding_bottom">
+        <div class="container">
+            <div class="row justify-content-between align-items-center">
+                <div class="col-md-5 col-lg-5">
+                    <div class="our_ability_member_text">
+                        <h2>We Analyse Your
+                            Health States In Order
+                            To Top Service</h2>
+                        <p>Kind lesser bring said midst they're created signs made the beginni years
+                            created Beast upon whales herb seas evening she'd day green dominion
+                            evening in moved have fifth in won't in darkness fruitful god behold
+                            whos without bring created creature.</p>
+                        <a href="#" class="btn_2">read more</a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-6">
+                    <div class="our_ability_img">
+                        <img src="img/top_service.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- top_service part end-->
+
+    <!--::review_part start::-->
+    <section class="review_part">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="client_review_part owl-carousel">
+                        <div class="client_review_single">
+                            <img src="img/Quote.png" class="Quote" alt="quote">
+                            <div class="client_review_text">
+                                <p>Also made from. Give may saying meat there from heaven it lights face had is gathered
+                                    god dea earth light for life may itself shall whales made they're blessed whales
+                                    also made from give
+                                    may saying meat. There from heaven it lights face had amazing place</p>
+                            </div>
+                            <h4>Mosan Cameron, <span>Executive of fedex</span></h4>
+                        </div>
+                        <div class="client_review_single">
+                            <img src="img/Quote.png" class="Quote" alt="quote">
+                            <div class="client_review_text media-body">
+                                <p>Also made from. Give may saying meat there from heaven it lights face had is gathered
+                                    god dea earth light for life may itself shall whales made they're blessed whales
+                                    also made from give
+                                    may saying meat. There from heaven it lights face had amazing place</p>
+                            </div>
+                            <h4>Mosan Cameron, <span>Executive of fedex</span></h4>
+                        </div>
+                        <div class="client_review_single">
+                            <img src="img/Quote.png" class="Quote" alt="quote">
+                            <div class="client_review_text">
+                                <p>Also made from. Give may saying meat there from heaven it lights face had is gathered
+                                    god dea earth light for life may itself shall whales made they're blessed whales
+                                    also made from give
+                                    may saying meat. There from heaven it lights face had amazing place</p>
+                            </div>
+                            <h4>Mosan Cameron, <span>Executive of fedex</span></h4>
+                        </div>
+                        <div class="client_review_single">
+                            <img src="img/Quote.png" class="Quote" alt="quote">
+                            <div class="client_review_text">
+                                <p>Also made from. Give may saying meat there from heaven it lights face had is gathered
+                                    god dea earth light for life may itself shall whales made they're blessed whales
+                                    also made from give
+                                    may saying meat. There from heaven it lights face had amazing place</p>
+                            </div>
+                            <h4>Mosan Cameron, <span>Executive of fedex</span></h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--::review_part end::-->
+
+    <!--::regervation_part start::-->
+    <section class="regervation_part">
+        <div class="container">
+            <div class="row align-items-center regervation_content">
+                <div class="col-lg-7 col-md-6">
+                    <div class="regervation_part_iner">
+                        <form>
+                            <h2>Make an Appointment</h2>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <input type="email" class="form-control" id="inputEmail4" placeholder="Name">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <input type="password" class="form-control" id="inputPassword4"
+                                        placeholder="Email address">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <select class="form-control" id="Select">
+                                        <option value="1" selected>Select service</option>
+                                        <option value="2">Name of service</option>
+                                        <option value="3">Name of service</option>
+                                        <option value="4">Name of service</option>
+                                        <option value="5">Name of service</option>
+                                    </select>
+                                </div>
+                                <div class="form-group time_icon col-md-6">
+                                    <select class="form-control" id="Select2">
+                                        <option value="" selected>Time</option>
+                                        <option value="1">8 AM TO 10AM</option>
+                                        <option value="1">10 AM TO 12PM</option>
+                                        <option value="1">12PM TO 2PM</option>
+                                        <option value="1">2PM TO 4PM</option>
+                                        <option value="1">4PM TO 6PM</option>
+                                        <option value="1">6PM TO 8PM</option>
+                                        <option value="1">4PM TO 10PM</option>
+                                        <option value="1">10PM TO 12PM</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-12">
+                                    <textarea class="form-control" id="Textarea" rows="4"
+                                        placeholder="Your Note "></textarea>
+                                </div>
+                            </div>
+                            <div class="regerv_btn">
+                                <a href="#" class="regerv_btn_iner">Make an Appointment</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-5 col-md-6">
+                    <div class="reservation_img">
+                        <img src="img/reservation.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--::regervation_part end::-->
+
+    <!--::doctor_part start::-->
+    <section class="doctor_part section_padding">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xl-8">
+                    <div class="section_tittle text-center">
+                        <h2> Experienced Doctors</h2>
+                        <p>Face replenish sea good winged bearing years air divide wasHave night male also</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6 col-lg-3">
+                    <div class="single_blog_item">
+                        <div class="single_blog_img">
+                            <img src="img/doctor/doctor_1.png" alt="doctor">
+                            <div class="social_icon">
+                                <a href="#"> <i class="ti-facebook"></i> </a>
+                                <a href="#"> <i class="ti-twitter-alt"></i> </a>
+                                <a href="#"> <i class="ti-instagram"></i> </a>
+                                <a href="#"> <i class="ti-skype"></i> </a>
+                            </div>
+                        </div>
+                        <div class="single_text">
+                            <div class="single_blog_text">
+                                <h3>DR Adam Billiard</h3>
+                                <p>Heart specialist</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-3">
+                    <div class="single_blog_item">
+                        <div class="single_blog_img">
+                            <img src="img/doctor/doctor_4.png" alt="doctor">
+                            <div class="social_icon">
+                                <a href="#"> <i class="ti-facebook"></i> </a>
+                                <a href="#"> <i class="ti-twitter-alt"></i> </a>
+                                <a href="#"> <i class="ti-instagram"></i> </a>
+                                <a href="#"> <i class="ti-skype"></i> </a>
+                            </div>
+                        </div>
+                        <div class="single_text">
+                            <div class="single_blog_text">
+                                <h3>DR Adam Billiard</h3>
+                                <p>Medicine specialist</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-3">
+                    <div class="single_blog_item">
+                        <div class="single_blog_img">
+                            <img src="img/doctor/doctor_2.png" alt="doctor">
+                            <div class="social_icon">
+                                <a href="#"> <i class="ti-facebook"></i> </a>
+                                <a href="#"> <i class="ti-twitter-alt"></i> </a>
+                                <a href="#"> <i class="ti-instagram"></i> </a>
+                                <a href="#"> <i class="ti-skype"></i> </a>
+                            </div>
+                        </div>
+                        <div class="single_text">
+                            <div class="single_blog_text">
+                                <h3>DR Fred Macyard</h3>
+                                <p>CHeart specialist</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-3">
+                    <div class="single_blog_item">
+                        <div class="single_blog_img">
+                            <img src="img/doctor/doctor_3.png" alt="doctor">
+                            <div class="social_icon">
+                                <a href="#"> <i class="ti-facebook"></i> </a>
+                                <a href="#"> <i class="ti-twitter-alt"></i> </a>
+                                <a href="#"> <i class="ti-instagram"></i> </a>
+                                <a href="#"> <i class="ti-skype"></i> </a>
+                            </div>
+                        </div>
+                        <div class="single_text">
+                            <div class="single_blog_text">
+                                <h3>DR Justin Stuard</h3>
+                                <p>Heart specialist</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--::doctor_part end::-->
+
+    <!-- intro_video_bg start-->
+    <section class="intro_video_bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="intro_video_iner text-center">
+                        <h2>View Our History</h2>
+                        <div class="intro_video_icon">
+                            <a id="play-video_1" class="video-play-button popup-youtube"
+                                href="https://www.youtube.com/watch?v=pBFQdxA-apI">
+                                <span class="ti-control-play"></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- intro_video_bg part start-->
+
+    <!--::blog_part start::-->
+    <section class="blog_part section_padding">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xl-8">
+                    <div class="section_tittle text-center">
+                        <h2>Update From Blog</h2>
+                        <p>Face replenish sea good winged bearing years air divide wasHave night male also</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6 col-lg-4 col-xl-4">
+                    <div class="single-home-blog">
+                        <div class="card">
+                            <img src="img/blog/blog_1.png" class="card-img-top" alt="blog">
+                            <div class="card-body">
+                                <ul>
+                                    <li> <span class="ti-user"></span>Jhon mike</li>
+                                    <li> <span class="ti-bookmark"></span>Clinic, doctors</li>
+                                </ul>
+                                <a href="blog.html">
+                                    <h5 class="card-title">Appear have grass man fill after
+                                        winged blessed image </h5>
+                                </a>
+                                <a href="#" class="blog_btn">read more</a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-4 col-xl-4">
+                    <div class="single-home-blog">
+                        <div class="card">
+                            <img src="img/blog/blog_2.png" class="card-img-top" alt="blog">
+                            <div class="card-body">
+                                <ul>
+                                    <li> <span class="ti-user"></span>Jhon mike</li>
+                                    <li> <span class="ti-bookmark"></span>Clinic, doctors</li>
+                                </ul>
+                                <a href="blog.html">
+                                    <h5 class="card-title">Appear have grass man fill after
+                                        winged blessed image </h5>
+                                </a>
+                                <a href="#" class="blog_btn">read more</a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-4 col-xl-4">
+                    <div class="single-home-blog">
+                        <div class="card">
+                            <img src="img/blog/blog_3.png" class="card-img-top" alt="blog">
+                            <div class="card-body">
+                                <ul>
+                                    <li> <span class="ti-user"></span>Jhon mike</li>
+                                    <li> <span class="ti-bookmark"></span>Clinic, doctors</li>
+                                </ul>
+                                <a href="blog.html">
+                                    <h5 class="card-title">Appear have grass man fill after
+                                        winged blessed image </h5>
+                                </a>
+                                <a href="#" class="blog_btn">read more</a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--::blog_part end::-->
+
+    <!-- footer part start-->
     <footer class="footer-area">
-        
+        <div class="footer section_padding">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-2 col-sm-4 mb-4 mb-xl-0 single-footer-widget">
+                        <h4>Services Link</h4>
+                        <ul>
+                            <li><a href="#">Eye treatment</a></li>
+                            <li><a href="#">Skin Surgery</a></li>
+                            <li><a href="#">Diagnosis clinic</a></li>
+                            <li><a href="#"> Dental care</a></li>
+                            <li><a href="#">Neurology service</a></li>
+                            <li><a href="#">Plastic surgery</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-xl-2 col-sm-4 mb-4 mb-xl-0 single-footer-widget">
+                        <h4>Quick Links</h4>
+                        <ul>
+                            <li><a href="#">About us</a></li>
+                            <li><a href="#">Department</a></li>
+                            <li><a href="#"> Online payment</a></li>
+                            <li><a href="#">Careers</a></li>
+                            <li><a href="#">Department</a></li>
+                        </ul>
+                    </div>
 
-        <!-- Copywrite Area -->
-        <div class="copywrite-content">
-            <div class="container h-100">
-                <div class="row h-100 align-items-center">
-                    <div class="col-12 col-sm-5">
-                        <!-- Copywrite Text -->
-                        <p class="copywrite-text"><a href="#"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved by e-PlayerShares
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-</p>
-                    </div>                    
+                    <div class="col-xl-2 col-sm-4 mb-4 mb-xl-0 single-footer-widget">
+                        <h4>Explore</h4>
+                        <ul>
+                            <li><a href="#">In the community</a></li>
+                            <li><a href="#">IU health foundation</a></li>
+                            <li><a href="#">Family support </a></li>
+                            <li><a href="#">Business solution</a></li>
+                            <li><a href="#">Community clinic</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-xl-2 col-sm-4 mb-4 mb-xl-0 single-footer-widget">
+                        <h4>Resources</h4>
+                        <ul>
+                            <li><a href="#">Lights were season</a></li>
+                            <li><a href="#"> Their is let wherein</a></li>
+                            <li><a href="#">which given over</a></li>
+                            <li><a href="#">Without given She</a></li>
+                            <li><a href="#">Isn two signs think</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-xl-4 col-sm-8 col-md-8 mb-4 mb-xl-0 single-footer-widget">
+                        <h4>Newsletter</h4>
+                        <p>Seed good winged wherein which night multiply
+                            midst does not fruitful</p>
+                        <div class="form-wrap" id="mc_embed_signup">
+                            <form target="_blank"
+                                action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
+                                method="get" class="form-inline">
+                                <input class="form-control" name="EMAIL" placeholder="Your Email Address"
+                                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your Email Address '"
+                                    required="" type="email">
+                                <button class="click-btn btn btn-default text-uppercase">subscribe</button>
+                                <div style="position: absolute; left: -5000px;">
+                                    <input name="b_36c4fd991d266f23781ded980_aefe40901a" tabindex="-1" value=""
+                                        type="text">
+                                </div>
+
+                                <div class="info"></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="copyright_part">
+            <div class="container">
+                <div class="row align-items-center">
+                    <p class="footer-text m-0 col-lg-8 col-md-12"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="ti-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+                    <div class="col-lg-4 col-md-12 text-center text-lg-right footer-social">
+                        <a href="#"><i class="ti-facebook"></i></a>
+                        <a href="#"> <i class="ti-twitter"></i> </a>
+                        <a href="#"><i class="ti-instagram"></i></a>
+                        <a href="#"><i class="ti-skype"></i></a>
+                    </div>
                 </div>
             </div>
         </div>
     </footer>
-    <!-- ##### Footer Area End ##### -->
 
-    <!-- ##### All Javascript Script ##### -->
-    <!-- jQuery-2.2.4 js -->
-    <script src="js/jquery/jquery-2.2.4.min.js"></script>
-    <!-- Popper js -->
-    <script src="js/bootstrap/popper.min.js"></script>
-    <!-- Bootstrap js -->
-    <script src="js/bootstrap/bootstrap.min.js"></script>
-    <!-- All Plugins js -->
-    <script src="js/plugins/plugins.js"></script>
-    <!-- Active js -->
-    <script src="js/active.js"></script>
+    <!-- footer part end-->
+
+    <!-- jquery plugins here-->
+
+    <script src="js/jquery-1.12.1.min.js"></script>
+    <!-- popper js -->
+    <script src="js/popper.min.js"></script>
+    <!-- bootstrap js -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- easing js -->
+    <script src="js/jquery.magnific-popup.js"></script>
+    <!-- swiper js -->
+    <script src="js/swiper.min.js"></script>
+    <!-- swiper js -->
+    <script src="js/masonry.pkgd.js"></script>
+    <!-- particles js -->
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/jquery.nice-select.min.js"></script>
+    <!-- swiper js -->
+    <script src="js/slick.min.js"></script>
+    <script src="js/jquery.counterup.min.js"></script>
+    <script src="js/waypoints.min.js"></script>
+    <!-- contact js -->
+    <script src="js/jquery.ajaxchimp.min.js"></script>
+    <script src="js/jquery.form.js"></script>
+    <script src="js/jquery.validate.min.js"></script>
+    <script src="js/mail-script.js"></script>
+    <script src="js/contact.js"></script>
+    <!-- custom js -->
+    <script src="js/custom.js"></script>
 </body>
 
 </html>

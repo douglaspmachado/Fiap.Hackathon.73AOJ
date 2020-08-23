@@ -38,7 +38,7 @@ namespace App.Infra.Repository
             throw new NotImplementedException();
         }
 
-        public Agenda Select(int pAgendaID)
+        public Agenda Select(string cpf_cnpjPsicologo)
         {
             throw new NotImplementedException();
         }
