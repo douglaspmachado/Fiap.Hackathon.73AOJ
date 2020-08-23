@@ -35,7 +35,7 @@ namespace App.Infra.Repository
 
             using (IDbConnection conn = Connection)
             {
-                listaAbordagens = conn.Query<Abordagens>("SELECT CODIGO, DESCRICAO FROM TAB_ABORDAGENS");
+                listaAbordagens = conn.Query<Abordagens>("SELECT COD_ABORDAGEM AS Codigo, DESCRICAO As Descricao FROM TBTIPOABORD");
             }
 
             return listaAbordagens;
@@ -47,7 +47,7 @@ namespace App.Infra.Repository
 
             using (IDbConnection conn = Connection)
             {
-                listaAtendimento = conn.Query<Atendimento>("SELECT CODIGO, DESCRICAO FROM TAB_ATENDIMENTO");
+                listaAtendimento = conn.Query<Atendimento>("SELECT COD_ATENDIMENTO as Codigo, DESCRICAO as Descricao FROM TBTIPOATEND");
             }
 
             return listaAtendimento;
@@ -59,10 +59,23 @@ namespace App.Infra.Repository
 
             using (IDbConnection conn = Connection)
             {
-                listaGenero = conn.Query<Genero>("SELECT CODIGO, DESCRICAO FROM TAB_GENERO");
+                listaGenero = conn.Query<Genero>("SELECT COD_GENERO as Codigo, DESCRICAO as Descricao FROM TBTIPOGENERO");
             }
 
             return listaGenero;
         }
+
+        public IEnumerable<Perfil> GetPerfil()
+        {
+            IEnumerable<Perfil> listaPerfil;
+
+            using (IDbConnection conn = Connection)
+            {
+                listaPerfil = conn.Query<Perfil>("SELECT COD_PERFIL as Codigo, DESCRICAO as Descricao FROM TBTIPOPERFIL");
+            }
+
+            return listaPerfil;
+        }
+
     }
 }

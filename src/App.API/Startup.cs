@@ -11,8 +11,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-//using App.Application.Interfaces;
-//using App.Infra.Repository;
 using Swashbuckle.AspNetCore.Swagger;
 using Swashbuckle.AspNetCore;
 using Swashbuckle.AspNetCore.SwaggerGen;
@@ -20,7 +18,8 @@ using Swashbuckle.AspNetCore.SwaggerUI;
 using Microsoft.OpenApi.Models;
 
 using Microsoft.Extensions.PlatformAbstractions;
-
+using App.Application.Interfaces;
+using App.Infra.Repository;
 
 namespace App.API
 {
@@ -45,7 +44,7 @@ namespace App.API
                 c.SwaggerDoc("v1",
                     new OpenApiInfo
                     {
-                        Title = "e-PlayerShares.com API",
+                        Title = "Therapon API",
                         Version = "v1",
                         Description = "",
                     });
@@ -68,8 +67,10 @@ namespace App.API
 
 
 
-            //services.AddTransient<IJogadorRepository, JogadorRepository>();
-            //services.AddTransient<ITorneio, TorneioRepository>();
+            services.AddTransient<IPacienteRepository, PacienteRepository>();
+            services.AddTransient<ICommonRepository, CommonRepository>();
+            services.AddTransient<IAgendaRepository, AgendaRepository>();
+            services.AddTransient<IPsicologoRepository, PsicologoRepository>();
 
 
         }
@@ -94,7 +95,7 @@ namespace App.API
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "PlayerShares.com API");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Therapon API");
             });
 
 

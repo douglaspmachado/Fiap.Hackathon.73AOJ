@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Text;
+using App.Application.Interfaces;
 using App.Domain.Entity;
 using Dapper;
 using Microsoft.Extensions.Configuration;
 
 namespace App.Infra.Repository
 {
-    public class PsicologoRepository
+    public class PsicologoRepository : IPsicologoRepository
     {
         private readonly IConfiguration _configuration;
         private StringBuilder SQL = new StringBuilder();
@@ -28,14 +29,14 @@ namespace App.Infra.Repository
         }
         public IEnumerable<Psicologo> GetAll()
         {
-            IEnumerable<Psicologo> jogadores;
+            IEnumerable<Psicologo> psicologos;
 
             using (IDbConnection conn = Connection)
             {
-                jogadores = conn.Query<Psicologo>("SELECT * FROM TBPROFISSIONAL");
+                psicologos = conn.Query<Psicologo>("SELECT * FROM TBPROFISSIONAL");
             }
 
-            return jogadores;
+            return psicologos;
         }
         
         public int Insert(Psicologo psicologo)
@@ -99,6 +100,8 @@ namespace App.Infra.Repository
                             ,psicologo.Endereco.Bairro
                             ,psicologo.Endereco.Numero
                             ,psicologo.Endereco.Complemento));
+
+                SQL.AppendLine();
                 
                 SQL.AppendLine(string.Format(@"
                         INSERT INTO [dbo].[TBPROFISSIONAL]
@@ -132,6 +135,7 @@ namespace App.Infra.Repository
                             ,psicologo.AnoTermino
                             ,psicologo.AreaEstudo
                             ,psicologo.DescricaoAtuacao));
+
 
 
                 SCOPE_IDENTITY = conn.QueryFirstOrDefault<int>(SQL.ToString());
