@@ -22,8 +22,8 @@ namespace App.UI.Controllers
             this._configuration = configuration;
         }
 
-        [Route("Psicologos/Agendar/{id}")]
-        public async Task<IActionResult> Agendar(string id)
+        [Route("Psicologos/{id}")]
+        public async Task<IActionResult> Psicologos(string id)
         {
 
             if (!string.IsNullOrEmpty(id))
@@ -43,7 +43,8 @@ namespace App.UI.Controllers
 
                     if (httpResponse.StatusCode == System.Net.HttpStatusCode.OK)
                     {
-                        return View("Psicologos", listaPsicologos);
+                        //return View("Psicologos", listaPsicologos);
+                        return View(listaPsicologos);
                     }
                     else
                     {
@@ -59,4 +60,43 @@ namespace App.UI.Controllers
         }
 
     }
+
+    //[Route("Psicologos/Agendar/{id}")]
+    //public async Task<IActionResult> Agendar(string idPaciente, string idPsicologo)
+    //{
+
+    //    if (!string.IsNullOrEmpty(idPaciente) && !string.IsNullOrEmpty(idPsicologo))
+    //    {
+
+    //        var url = string.Format("http://{0}/api/Jogador/Select/{1}", _configuration["ServicenameAPI"], id);
+
+
+    //        using (var client = new HttpClient())
+    //        {
+    //            var httpResponse = await client.GetAsync(url);
+
+
+    //            var data = httpResponse.Content.ReadAsStringAsync().Result;
+
+    //            var jogador = JsonConvert.DeserializeObject<Jogador>(data);
+
+    //            if (httpResponse.StatusCode == System.Net.HttpStatusCode.OK)
+    //            {
+    //                return View("Detalhe", jogador);
+    //            }
+    //            else
+    //            {
+    //                ViewBag.Message = "Error";
+    //                return View("Error");
+    //            }
+
+    //        }
+
+    //    }
+
+    //    return View("Detalhe");
+    //}
+
+
+
 }
