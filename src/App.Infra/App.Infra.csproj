@@ -14,7 +14,6 @@
     <PackageReference Include="Microsoft.Data.SqlClient" Version="1.1.2" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="2.1.0" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.1" />
-    <PackageReference Include="Whatsapp.NET" Version="1.2.2" />
   </ItemGroup>
 
   <ItemGroup>
