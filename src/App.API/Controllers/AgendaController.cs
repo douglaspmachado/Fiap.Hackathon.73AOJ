@@ -19,6 +19,7 @@ namespace App.API.Controllers
         /// Retorna um paciente específico cadastrados na plataforma
         /// </summary>
         /// <param name="cpf_cnpjPsicologo"></param>
+        /// <param name="dataDia"></param>
         /// <returns></returns>
         // [HttpGet]
         // [Route("Get/{cpf_cnpjPsicologo}")]

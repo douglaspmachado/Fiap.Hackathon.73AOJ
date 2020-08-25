@@ -38,23 +38,18 @@ namespace App.UI.Controllers
         {
             return View("Error");
         }
-
-        [Route("Home/Login")]
-        public IActionResult Login()
-        {
-            return View("Login");
-        }
+        
 
         [Route("Home/Auth")]
-        public async Task<IActionResult> Auth(string cpf, string senha)
+        public async Task<IActionResult> Auth(string cpfcnpj, string senha)
         {
 
-            if (string.IsNullOrEmpty(cpf) && string.IsNullOrEmpty(senha))
+            if (string.IsNullOrEmpty(cpfcnpj) && string.IsNullOrEmpty(senha))
             {
                 return RedirectToAction("Error", "Home");
             }
 
-            var dadosAcesso = new { cpf = cpf, senha = senha };
+            var dadosAcesso = new { cpf = cpfcnpj, senha = senha };
 
             var json = JsonConvert.SerializeObject(dadosAcesso);
 
@@ -69,8 +64,8 @@ namespace App.UI.Controllers
 
                 if (httpResponse.StatusCode == System.Net.HttpStatusCode.OK)
                 {
-                    HttpContext.Session.SetString("cpf", cpf);
-                    return RedirectToAction("Agenda", "Psicologos", new { cpf = cpf });
+                    HttpContext.Session.SetString("cpf", cpfcnpj);
+                    return RedirectToAction("Agenda", "Terapeuta", new { cpf = cpfcnpj });
                 }
                 else
                 {
@@ -80,5 +75,25 @@ namespace App.UI.Controllers
             }
 
         }
+
+
+        [Route("Home/Login")]
+        public IActionResult Login()
+        {
+            return View("Login");
+        }
+
+        [Route("Home/Sobre")]
+        public IActionResult Sobre()
+        {
+            return View("Sobre");
+        }
+
+         [Route("Home/Servicos")]
+        public IActionResult Servicos()
+        {
+            return View("Servicos");
+        }
+
     }
 }
