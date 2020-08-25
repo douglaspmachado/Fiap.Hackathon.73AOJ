@@ -6,7 +6,7 @@
     "httpPort": 90002
   },
   "profiles": {
-    "PlayerShares.API": {
+    "App.API": {
       "commandName": "Project"
     }
   }

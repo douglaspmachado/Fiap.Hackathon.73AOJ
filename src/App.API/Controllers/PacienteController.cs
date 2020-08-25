@@ -129,7 +129,8 @@ namespace App.API
 
 
         [HttpGet]
-        public async Task<IActionResult> Autenticar([FromBody]string cpf, [FromBody]string senha)
+        [Route("Autenticar")]
+        public async Task<IActionResult> Autenticar(string cpf, string senha)
         {
             
 
