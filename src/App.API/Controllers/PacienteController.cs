@@ -23,7 +23,7 @@ namespace App.API
         /// <returns></returns>
         // [HttpGet]
         // [Route("Get/{cpf}")]
-        public async Task<IActionResult> Select(string cpf)
+        public async Task<IActionResult> Select([FromBody]string cpf)
         {
             try
             {
@@ -127,6 +127,32 @@ namespace App.API
             }
         }
 
+
+        [HttpGet]
+        public async Task<IActionResult> Autenticar([FromBody]string cpf, [FromBody]string senha)
+        {
+            
+
+            try
+            {
+                bool aut = _pacienteRepository.Autenticar(cpf, senha);
+
+                if (aut)
+                {
+                   return Ok();
+                }
+                else
+                {
+                    return NotFound();
+                }
+
+                
+            }
+            catch (Exception)
+            {
+                return StatusCode(500);
+            }
+        }
 
 
     }

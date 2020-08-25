@@ -10,5 +10,6 @@ namespace App.Application.Interfaces
 
         int Update(Usuario usuario);
 
+        bool Autenticar(string cpf, string senha);
     }
 }

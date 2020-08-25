@@ -226,6 +226,7 @@ namespace App.Infra.Repository
             Psicologo psicologo = null;
             IEnumerable<Abordagens> listaAbordagem = null;
             IEnumerable<Atendimento> listaAtendimento = null;
+            IEnumerable<Agenda> listaAgenda = null;
 
 
             SQL = new StringBuilder();
@@ -274,7 +275,7 @@ namespace App.Infra.Repository
 
                 psicologo = conn.QueryFirstOrDefault<Psicologo>(SQL.ToString());
 
-                //Se retornou psicologo, busco as informações de atendimento e abordagem
+                //Se retornou psicologo, busco as informações de atendimento, abordagem e agenda
                 if (psicologo != null)
                 {
 
@@ -305,7 +306,23 @@ namespace App.Infra.Repository
 
                     listaAtendimento = conn.Query<Atendimento>(SQL.ToString());
 
-                    
+
+                    SQL = new StringBuilder();
+
+                    SQL.AppendLine(string.Format(@"
+
+                                   SELECT USU.NOME + ' ' + USU.SOBRENOME AS Nome
+	                                      ,AGENDA.[CPF_PACIENTE] AS CPF_Paciente
+	                                      ,AGENDA.[DATA_AGENDAMENTO] AS DataConsulta
+	                                      ,AGENDA.[HORARIO] AS HorarioConsulta
+                                    FROM TBAGENDA AS AGENDA
+                                    INNER JOIN TBUSUARIO USU
+                                    ON AGENDA.[CPF_PACIENTE] = USU.[CPFCNPJ]
+                                    WHERE CPF_CNPJPROF =  {0}", psicologo.CPF_CNPJ));
+
+                    listaAgenda = conn.Query<Agenda>(SQL.ToString());
+
+
                     if (listaAbordagem.AsList().Count > 0)
                     {
                         psicologo.Abordagens.AsList().AddRange(listaAbordagem);
@@ -316,10 +333,59 @@ namespace App.Infra.Repository
                         psicologo.Atendimentos.AsList().AddRange(listaAtendimento);
                     }
 
+                    if (listaAgenda.AsList().Count > 0)
+                    {
+                        psicologo.Agenda.AddRange(listaAgenda);
+                    }
+
                 }
 
             }
+
+           
+
             return psicologo;
+
+            
         }
+
+        public bool Autenticar(string cpf, string senha)
+        {
+            Usuario usuario = null;
+            SQL = new StringBuilder();
+
+
+            using (IDbConnection conn = Connection)
+            {
+
+                SQL.AppendLine(string.Format(@"
+                       SELECT  [CPFCNPJ] AS CPF_CNPJ
+                              ,[COD_PERFIL] AS COD_PERFIL
+                              ,[NOME] AS Nome
+                              ,[SOBRENOME] AS Sobrenome
+                              ,[DT_NASCIMENTO] AS  DataNascimento
+                              ,[EMAIL] AS Email
+                              ,[CELULAR] AS Celular
+                              ,[PAIS] AS Pais
+                              ,[CEP] AS CEP
+                              ,[ESTADO] AS Estado
+                              ,[CIDADE] AS Cidade
+                              ,[LOGRADOURO] AS Logradouro
+                              ,[BAIRRO] AS Bairro
+                              ,[NUMERO] AS Numero
+                              ,[COMPLEMENTO] AS Complemento
+                          FROM [dbo].[TBUSUARIO]
+                          WHERE CPFCNPJ = {0} AND SENHA = {1} ", cpf, senha));
+
+
+                usuario = conn.QueryFirstOrDefault<Usuario>(SQL.ToString());
+
+
+
+            }
+
+            return usuario == null ? false : true;
+        }
+
     }
 }

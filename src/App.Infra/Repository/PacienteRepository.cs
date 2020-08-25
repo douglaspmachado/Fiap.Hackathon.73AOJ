@@ -157,5 +157,43 @@ namespace App.Infra.Repository
 
             return usuario;
         }
+
+        public bool Autenticar(string cpf, string senha)
+        {
+            Usuario usuario = null;
+            SQL = new StringBuilder();
+
+
+            using (IDbConnection conn = Connection)
+            {
+
+                SQL.AppendLine(string.Format(@"
+                       SELECT  [CPFCNPJ] AS CPF_CNPJ
+                              ,[COD_PERFIL] AS COD_PERFIL
+                              ,[NOME] AS Nome
+                              ,[SOBRENOME] AS Sobrenome
+                              ,[DT_NASCIMENTO] AS  DataNascimento
+                              ,[EMAIL] AS Email
+                              ,[CELULAR] AS Celular
+                              ,[PAIS] AS Pais
+                              ,[CEP] AS CEP
+                              ,[ESTADO] AS Estado
+                              ,[CIDADE] AS Cidade
+                              ,[LOGRADOURO] AS Logradouro
+                              ,[BAIRRO] AS Bairro
+                              ,[NUMERO] AS Numero
+                              ,[COMPLEMENTO] AS Complemento
+                          FROM [dbo].[TBUSUARIO]
+                          WHERE CPFCNPJ = {0} AND SENHA = {1} ", cpf, senha));
+
+
+                usuario = conn.QueryFirstOrDefault<Usuario>(SQL.ToString());
+
+
+
+            }
+
+            return usuario == null ? false : true;
+        }
     }
 }

@@ -159,6 +159,21 @@ namespace App.API
         }
 
 
+        [HttpGet]
+        public async Task<IActionResult> Autenticar(string cpf, string senha)
+        {
+            try
+            {
+                bool aut = _psicologoRepository.Autenticar(cpf, senha);
+
+                return Ok(aut);
+            }
+            catch (Exception)
+            {
+                return StatusCode(500);
+            }
+        }
+
 
     }
 }
