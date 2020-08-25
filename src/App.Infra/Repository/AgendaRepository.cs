@@ -35,12 +35,60 @@ namespace App.Infra.Repository
 
         public int Insert(Agenda agenda)
         {
-            throw new NotImplementedException();
+            SQL = new StringBuilder();
+            int SCOPE_IDENTITY = 0;
+
+
+            using (IDbConnection conn = Connection)
+            {
+                SQL.AppendLine(string.Format(@"
+                        INSERT INTO [dbo].[TBAGENDA]
+                                ([CPF_CNPJPROF]
+                                ,[CPF_PACIENTE]
+                                ,[DATA_AGENDAMENTO]
+                                ,[HORARIO]) 
+                            VALUES
+                                ('{0}'
+                                ,'{1}'
+                                ,'{2}'
+                                ,'{3}');
+                SELECT CAST(SCOPE_IDENTITY() as int)"
+                            ,agenda.CPF_CNPJPsicologo
+                            ,agenda.CPF_Paciente
+                            ,agenda.DataConsulta
+                            ,agenda.HorarioConsulta));
+
+                SCOPE_IDENTITY = conn.QueryFirstOrDefault<int>(SQL.ToString());
+                
+            }
+
+            return SCOPE_IDENTITY;
         }
 
         public Agenda Select(string cpf_cnpjPsicologo)
         {
-            throw new NotImplementedException();
+            Agenda agenda = null;
+            SQL = new StringBuilder();
+
+
+            using (IDbConnection conn = Connection)
+            {
+
+                SQL.AppendLine(string.Format(@"
+                       SELECT  [CPF_CNPJPROF] AS CPF_CNPJPROF
+                              ,[CPF_PACIENTE] AS CPF_PACIENTE
+                              ,[DATA_AGENDAMENTO] AS DATA_AGENDAMENTO
+                              ,[HORARIO] AS HORARIO
+                          FROM [dbo].[TBAGENDA]
+                          WHERE CPF_CNPJPROF = {0} ", 
+                          cpf_cnpjPsicologo));
+
+
+                agenda = conn.QueryFirstOrDefault<Agenda>(SQL.ToString());
+
+            }
+
+            return agenda;
         }
 
         public int Update(Agenda agenda)
