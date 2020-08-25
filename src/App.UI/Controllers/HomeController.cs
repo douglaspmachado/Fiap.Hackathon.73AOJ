@@ -23,5 +23,23 @@ namespace App.UI.Controllers
             return View("Error");
         }
 
+        [Route("Home/Login")]
+        public IActionResult Login()
+        {
+            return View("Login");
+        }
+
+        [Route("Home/Sobre")]
+        public IActionResult Sobre()
+        {
+            return View("Sobre");
+        }
+
+         [Route("Home/Servicos")]
+        public IActionResult Servicos()
+        {
+            return View("Servicos");
+        }
+
     }
 }

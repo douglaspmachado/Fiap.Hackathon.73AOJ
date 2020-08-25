@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
 
 <head>
@@ -6,25 +6,25 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>medical</title>
-  <link rel="icon" href="img/favicon.png">
+  <link rel="icon" href="~/img/favicon.png">
   <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="~/css/bootstrap.min.css">
   <!-- animate CSS -->
-  <link rel="stylesheet" href="css/animate.css">
+  <link rel="stylesheet" href="~/css/animate.css">
   <!-- owl carousel CSS -->
-  <link rel="stylesheet" href="css/owl.carousel.min.css">
+  <link rel="stylesheet" href="~/css/owl.carousel.min.css">
   <!-- themify CSS -->
-  <link rel="stylesheet" href="css/themify-icons.css">
+  <link rel="stylesheet" href="~/css/themify-icons.css">
   <!-- flaticon CSS -->
-  <link rel="stylesheet" href="css/flaticon.css">
+  <link rel="stylesheet" href="~/css/flaticon.css">
   <!-- magnific popup CSS -->
-  <link rel="stylesheet" href="css/magnific-popup.css">
+  <link rel="stylesheet" href="~/css/magnific-popup.css">
   <!-- nice select CSS -->
-  <link rel="stylesheet" href="css/nice-select.css">
+  <link rel="stylesheet" href="~/css/nice-select.css">
   <!-- swiper CSS -->
-  <link rel="stylesheet" href="css/slick.css">
+  <link rel="stylesheet" href="~/css/slick.css">
   <!-- style CSS -->
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="~/css/style.css">
 </head>
 
 <body>
@@ -34,7 +34,7 @@
       <div class="row align-items-center">
         <div class="col-lg-12">
           <nav class="navbar navbar-expand-lg navbar-light">
-            <a class="navbar-brand" href="index.html"> <img src="img/logo.png" alt="logo"> </a>
+            <a class="navbar-brand" href="/Home/Index"> <img src="~/img/logo.png" alt="logo"> </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
               aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
@@ -43,19 +43,19 @@
             <div class="collapse navbar-collapse main-menu-item justify-content-end" id="navbarSupportedContent">
               <ul class="navbar-nav align-items-center">
                 <li class="nav-item active">
-                  <a class="nav-link" href="index.html">Início</a>
+                  <a class="nav-link" href="/Home/Index">Início</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="Sobre.html">Sobre</a>
+                  <a class="nav-link" href="/Home/Sobre">Sobre</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="Servicos.html">Serviços</a>
+                  <a class="nav-link" href="/Home/Servicos">Serviços</a>
                 </li>
 				<li class="nav-item">
-                  <a class="nav-link" href="Terapeutas.html">Terapeutas</a>
+                  <a class="nav-link" href="/Terapeuta/Pesquisa">Terapeutas</a>
                 </li>
                 <li class="d-none d-lg-block">
-                  <a href="Login.html" class="genric-btn primary-border circle arrow">Login<span class="lnr lnr-arrow-right"></span></a>
+                  <a href="/Home/Login" class="genric-btn primary-border circle arrow">Login<span class="lnr lnr-arrow-right"></span></a>
                 </li>
               </ul>
             </div>
@@ -73,8 +73,8 @@
         <div class="col-lg-12">
           <div class="breadcrumb_iner">
             <div class="breadcrumb_iner_item">
-              <h2>Paciente</h2>
-              <p>Início<span>/</span>Paciente</p>
+              <h2>Terapeuta</h2>
+              <p>Início<span>/</span>Terapeuta</p>
             </div>
           </div>
         </div>
@@ -91,7 +91,7 @@
 			<div class="col-lg-10">	
 				<h3 class="mb-30">Dados Pessoais</h3>
 				<div class="section-top-border">					
-					<form action="@Url.Action("Salvar","Cadastro")" method="post">
+					<form action="#">
 						<div class="row">
 							<div class="col-md-6 mb-3">								
 								<input type="text" name="cpf" placeholder="CPF"
@@ -178,6 +178,79 @@
 									onblur="this.placeholder = 'Complemento'" required class="single-input">
 							</div>						
 						</div>
+						
+						<h3>Dados profissionais</h3>
+						<div class="section-top-border">
+							<div class="row">
+								<div class="col-md-6 mb-3">
+									<input type="text" name="crp" placeholder="CRP"
+										onfocus="this.placeholder = ''" onblur="this.placeholder = 'CRP'" required
+										class="single-input">
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6 mb-3">									
+										<div class="form-select" id="default-select_2">
+											<select>
+												<option value="1">Graduação</option>
+												<option value="2">Pós Graduação</option>
+												<option value="3">Especialização</option>
+												<option value="4">Doutorado</option>
+												<option value="5">Pós-Doutorado</option>
+											</select>
+										</div>
+								</div>
+								<div class="col-md-6 mb-3">
+										<input type="text" name="instituicao" placeholder="Instituição de Ensino"
+											onfocus="this.placeholder = ''" onblur="this.placeholder = 'Instituição de Ensino'" required
+											class="single-input">
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12 mb-3">
+									<input type="text" name="cursor" placeholder="Curso"
+										onfocus="this.placeholder = ''" onblur="this.placeholder = 'Curso'" required
+										class="single-input">
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6 mb-3">
+									<input type="text" name="anoinicio" placeholder="Ano de Início"
+										onfocus="this.placeholder = ''" onblur="this.placeholder = 'Ano de Início'" required
+										class="single-input">
+								</div>
+								<div class="col-md-6 mb-3">
+									<input type="text" name="anotermino" placeholder="Ano de Término"
+										onfocus="this.placeholder = ''" onblur="this.placeholder = 'Ano de Término'" required
+										class="single-input">
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12 mb-3">									
+									<textarea class="single-textarea" name="descricao" placeholder="Descrição" onfocus="this.placeholder = ''"
+										onblur="this.placeholder = 'Descrição'" required></textarea>
+								</div>
+							</div>
+							<div class="single-element-widget mt-30">
+								<h3 class="mb-30">Atendimento</h3>
+								<div class="switch-wrap d-flex justify-content-between">
+									<p>Adolescentes</p>
+									<div class="primary-checkbox">
+										<input type="checkbox" id="atendimento1">
+										<label for="atendimento1"></label>
+									</div>
+								</div>
+								
+								<h3 class="mb-30">Abordagens</h3>
+								<div class="switch-wrap d-flex justify-content-between">
+									<p>Adolescentes</p>
+									<div class="primary-checkbox">
+										<input type="checkbox" id="abordagem1">
+										<label for="abordagem1"></label>
+									</div>
+								</div>		
+							</div>
+						</div>					
 						<hr class="mb-4">
 						<button class="genric-btn primary text-uppercase">Enviar</button>						
 					</form>
@@ -210,32 +283,32 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
   <!-- jquery plugins here-->
 
-  <script src="js/jquery-1.12.1.min.js"></script>
+  <script src="~/js/jquery-1.12.1.min.js"></script>
   <!-- popper js -->
-  <script src="js/popper.min.js"></script>
+  <script src="~/js/popper.min.js"></script>
   <!-- bootstrap js -->
-  <script src="js/bootstrap.min.js"></script>
+  <script src="~/js/bootstrap.min.js"></script>
   <!-- easing js -->
-  <script src="js/jquery.magnific-popup.js"></script>
+  <script src="~/js/jquery.magnific-popup.js"></script>
   <!-- swiper js -->
-  <script src="js/swiper.min.js"></script>
+  <script src="~/js/swiper.min.js"></script>
   <!-- swiper js -->
-  <script src="js/masonry.pkgd.js"></script>
+  <script src="~/js/masonry.pkgd.js"></script>
   <!-- particles js -->
-  <script src="js/owl.carousel.min.js"></script>
-  <script src="js/jquery.nice-select.min.js"></script>
+  <script src="~/js/owl.carousel.min.js"></script>
+  <script src="~/js/jquery.nice-select.min.js"></script>
   <!-- swiper js -->
-  <script src="js/slick.min.js"></script>
-  <script src="js/jquery.counterup.min.js"></script>
-  <script src="js/waypoints.min.js"></script>
+  <script src="~/js/slick.min.js"></script>
+  <script src="~/js/jquery.counterup.min.js"></script>
+  <script src="~/js/waypoints.min.js"></script>
   <!-- Paciente js -->
-  <script src="js/jquery.ajaxchimp.min.js"></script>
-  <script src="js/jquery.form.js"></script>
-  <script src="js/jquery.validate.min.js"></script>
-  <script src="js/mail-script.js"></script>
-  <script src="js/Paciente.js"></script>
+  <script src="~/js/jquery.ajaxchimp.min.js"></script>
+  <script src="~/js/jquery.form.js"></script>
+  <script src="~/js/jquery.validate.min.js"></script>
+  <script src="~/js/mail-script.js"></script>
+  <script src="~/js/Paciente.js"></script>
   <!-- custom js -->
-  <script src="js/custom.js"></script>
+  <script src="~/js/custom.js"></script>
 </body>
 
 </html>
