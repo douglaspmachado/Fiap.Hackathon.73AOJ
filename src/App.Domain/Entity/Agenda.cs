@@ -8,8 +8,12 @@ namespace App.Domain.Entity
 
         public string CPF_CNPJPsicologo { get; set; }
 
-        public string DataConsulta  { get; set; }
+        public DateTime DataConsulta  { get; set; }
 
-        public string HorarioConsulta { get; set; }
+        public DateTime HorarioConsulta { get; set; }
+
+        public string Nome { get; set; }
+
+        
     }
 }

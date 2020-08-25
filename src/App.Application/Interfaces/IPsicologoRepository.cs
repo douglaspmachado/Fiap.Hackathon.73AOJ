@@ -16,5 +16,7 @@ namespace App.Application.Interfaces
 
         Psicologo Select(string cpf);
 
+        bool Autenticar(string cpf, string senha);
+
     }
 }
