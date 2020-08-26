@@ -10,7 +10,7 @@ namespace App.Application.Interfaces
 
         IEnumerable<Psicologo> GetAll();
 
-        int Insert(Psicologo psicologo);
+        bool Insert(Psicologo psicologo);
 
         int Update(Psicologo psicologo);
 

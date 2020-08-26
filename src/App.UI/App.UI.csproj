@@ -24,4 +24,10 @@
     <ProjectReference Include="..\App.Infra\App.Infra.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Update="Views\Terapeuta\Agenda.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+  </ItemGroup>
+
 </Project>

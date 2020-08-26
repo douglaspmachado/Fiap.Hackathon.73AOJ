@@ -19,17 +19,19 @@ namespace App.UI.Controllers
         //private readonly string URL_API = "192.168.99.100:20001";
         private readonly IConfiguration _configuration;
         private readonly ICommonRepository _commonRepository;
+        private readonly IPsicologoRepository _psicologoRepository;
 
-        public TerapeutaController(IConfiguration configuration, ICommonRepository commonRepository)
+
+        public TerapeutaController(IConfiguration configuration,
+                    ICommonRepository commonRepository,
+                    IPsicologoRepository psicologoRepository)
         {
             this._configuration = configuration;
             this._commonRepository = commonRepository;
+            this._psicologoRepository = psicologoRepository;
         }
 
-        //public TerapeutaController(ICommonRepository commonRepository)
-        //{
-        //    this._commonRepository = commonRepository;
-        //}
+
 
         [Route("Terapeuta/Cadastro")]
         public IActionResult Cadastro()
@@ -41,7 +43,7 @@ namespace App.UI.Controllers
             return View("Cadastro");
         }
 
-         [Route("Terapeuta/Pesquisa")]
+        [Route("Terapeuta/Pesquisa")]
         public IActionResult Pesquisa()
         {
             return View("Pesquisa");
@@ -74,8 +76,10 @@ namespace App.UI.Controllers
         {
 
             var psicologo = new Psicologo();
-            psicologo.CPF_CNPJ = cpf;
+            psicologo.CPF_CNPJ = cpf.Replace(".", "").Replace("-", "");
             psicologo.Nome = nome;
+            psicologo.Email = email;
+            psicologo.Senha = senha;
             psicologo.Sobrenome = sobrenome;
             psicologo.DataNascimento = Convert.ToDateTime(dtnascimento);
             psicologo.Celular = celular;
@@ -99,85 +103,46 @@ namespace App.UI.Controllers
             psicologo.DescricaoAtuacao = descricao;
             psicologo.AreaEstudo = string.Empty;
 
-            //CodigoAbordagem.ToList().ForEach(p =>
-            //{
-            //    psicologo.Abordagens.ToList().Add(_commonRepository.GetAbordagens().SingleOrDefault(a => a.CodigoAbordagem == p));
 
-            //});
-
-            //CodigoAtendimento.ToList().ForEach(p =>
-            //{
-            //    psicologo.Atendimentos.ToList().Add(_commonRepository.GetAtendimento().SingleOrDefault(a => a.CodigoAtendimento == p));
-
-            //});
-
-
-
-            var json = JsonConvert.SerializeObject(psicologo);
-
-            var data = new StringContent(json, Encoding.UTF8, "application/json");
-
-            var url = string.Format("http://{0}/api/Psicologo/Insert", _configuration["ServicenameAPI"]);
-
-
-            using (var client = new HttpClient())
+            if (_psicologoRepository.Insert(psicologo))
             {
-                var httpResponse = await client.PostAsync(url, data);
 
-                var idPsicologo = httpResponse.Content.ReadAsStringAsync().Result;
-
-                if (httpResponse.StatusCode == System.Net.HttpStatusCode.OK)
-                {
-
-                    return RedirectToAction("Login", "Home");
-                }
-                else
-                {
-                    ViewBag.Message = "Error";
-                    return View("Error");
-                }
-
+                return RedirectToAction("Login", "Home");
             }
+            else
+            {
+                return View("Error");
+            }
+
 
         }
 
-        [HttpGet]
-        [Route("Terapeuta/Agenda/{cpf}")]
-        public async Task<IActionResult> Psicologos(string cpf)
+        [Route("Terapeuta/Agenda")]
+        public async Task<IActionResult> Agenda(string cpf)
         {
-
-            //Recupera apos o login
-            cpf = HttpContext.Session.GetString("cpf");
+           
 
             if (!string.IsNullOrEmpty(cpf))
             {
 
-                var url = string.Format("http://{0}/api/Psicologos/Select/{0}", _configuration["ServicenameAPI"], cpf);
+                var psicologo = _psicologoRepository.Select(cpf);
 
-
-                using (var client = new HttpClient())
+                if (psicologo != null)
                 {
-                    var httpResponse = await client.GetAsync(url);
-
-                    var data = httpResponse.Content.ReadAsStringAsync().Result;
-
-                    var psicologo = JsonConvert.DeserializeObject<Psicologo>(data);
-
-                    if (httpResponse.StatusCode == System.Net.HttpStatusCode.OK)
-                    {
-                        return View("Agenda", psicologo);
-                    }
-                    else
-                    {
-                        ViewBag.Message = "Error";
-                        return View("Error");
-                    }
-
+                    return View("Agenda", psicologo);
+                }
+                else
+                {
+                    return View("Error");
                 }
 
             }
+            else
+            {
+                return View("Error");
+            }
 
-            return View("Psicologos");
+           
         }
 
     }

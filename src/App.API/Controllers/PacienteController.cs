@@ -21,8 +21,8 @@ namespace App.API
         /// </summary>
         /// <param name="cpf"></param>
         /// <returns></returns>
-        // [HttpGet]
-        // [Route("Get/{cpf}")]
+        [HttpGet]
+        [Route("Get/{cpf}")]
         public async Task<IActionResult> Select([FromBody]string cpf)
         {
             try

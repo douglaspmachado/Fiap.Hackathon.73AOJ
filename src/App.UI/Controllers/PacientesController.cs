@@ -23,7 +23,7 @@ namespace App.UI.Controllers
             this._configuration = configuration;
         }
 
-        [Route("Paciente/Cadastro")]
+        [Route("Pacientes/Cadastro")]
         public IActionResult Cadastro()
         {
             return View("Cadastro");

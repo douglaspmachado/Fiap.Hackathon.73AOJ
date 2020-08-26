@@ -34,6 +34,11 @@ namespace App.UI
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            //services.AddDistributedMemoryCache();
+            services.AddDistributedMemoryCache();
+            services.AddSession(options => {
+                options.IdleTimeout = TimeSpan.FromMinutes(1);
+            });
             services.AddMvc();
             services.AddTransient<IPacienteRepository, PacienteRepository>();
             services.AddTransient<ICommonRepository, CommonRepository>();
@@ -60,6 +65,7 @@ namespace App.UI
             //app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
+            app.UseSession();
 
             app.UseMvc(routes =>
             {

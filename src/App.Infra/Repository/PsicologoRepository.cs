@@ -19,7 +19,7 @@ namespace App.Infra.Repository
         {
             this._configuration = configuration;
         }
-        
+
         public IDbConnection Connection
         {
             get
@@ -78,18 +78,24 @@ namespace App.Infra.Repository
 
             return psicologos;
         }
-        
-        public int Insert(Psicologo psicologo)
+
+        public bool Insert(Psicologo psicologo)
         {
             SQL = new StringBuilder();
             int SCOPE_IDENTITY = 0;
 
 
-            using (IDbConnection conn = Connection)
+
+            try
             {
-                SQL.AppendLine(string.Format(@"
+
+
+
+                using (IDbConnection conn = Connection)
+                {
+                    SQL.AppendLine(string.Format(@"
                         INSERT INTO [dbo].[TBUSUARIO]
-                                ([CPF_CNPJ]
+                                ([CPFCNPJ]
                                 ,[COD_PERFIL]
                                 ,[NOME]
                                 ,[SOBRENOME]
@@ -121,32 +127,33 @@ namespace App.Infra.Repository
                                 ,'{12}'
                                 ,'{13}'
                                 ,'{14}'
-                                ,'{15}');
+                                ,'{15}');"
 
-                SELECT CAST(SCOPE_IDENTITY() as int)"
+                                , psicologo.CPF_CNPJ
+                                , psicologo.Perfil.CodigoPerfil
+                                , psicologo.Nome
+                                , psicologo.Sobrenome
+                                , psicologo.DataNascimento.Date.Date
+                                , psicologo.Email
+                                , psicologo.Senha
+                                , psicologo.Celular
+                                , psicologo.Endereco.Pais
+                                , psicologo.Endereco.CEP
+                                , psicologo.Endereco.Estado
+                                , psicologo.Endereco.Cidade
+                                , psicologo.Endereco.Logradouro
+                                , psicologo.Endereco.Bairro
+                                , psicologo.Endereco.Numero
+                                , psicologo.Endereco.Complemento));
 
-                            ,psicologo.CPF_CNPJ
-                            ,psicologo.Perfil
-                            ,psicologo.Nome
-                            ,psicologo.Sobrenome
-                            ,psicologo.DataNascimento
-                            ,psicologo.Email
-                            ,psicologo.Senha
-                            ,psicologo.Celular
-                            ,psicologo.Endereco.Pais
-                            ,psicologo.Endereco.CEP
-                            ,psicologo.Endereco.Estado
-                            ,psicologo.Endereco.Cidade
-                            ,psicologo.Endereco.Logradouro
-                            ,psicologo.Endereco.Bairro
-                            ,psicologo.Endereco.Numero
-                            ,psicologo.Endereco.Complemento));
 
-                SQL.AppendLine();
-                
-                SQL.AppendLine(string.Format(@"
+                    conn.Execute(SQL.ToString());
+
+                    SQL = new StringBuilder();
+
+                    SQL.AppendLine(string.Format(@"
                         INSERT INTO [dbo].[TBPROFISSIONAL]
-                                ([CPF_CNPJ]
+                                ([CPFCNPJ]
                                 ,[CRP]
                                 ,[COD_GRADUACAO]
                                 ,[INSTITUICAO_ENSINO]
@@ -168,23 +175,34 @@ namespace App.Infra.Repository
 
                 SELECT CAST(SCOPE_IDENTITY() as int)"
 
-                            ,psicologo.CPF_CNPJ
-                            ,psicologo.CRP
-                            ,psicologo.Graduacao.CodigoGraduacao
-                            ,psicologo.InstituicaoEnsino
-                            ,psicologo.Curso
-                            ,psicologo.AnoInicio
-                            ,psicologo.AnoTermino
-                            ,psicologo.AreaEstudo
-                            ,psicologo.DescricaoAtuacao));
+                                , psicologo.CPF_CNPJ
+                                , psicologo.CRP
+                                , psicologo.CodGraduacao
+                                , psicologo.InstituicaoEnsino
+                                , psicologo.Curso
+                                , psicologo.AnoInicio
+                                , psicologo.AnoTermino
+                                , psicologo.AreaEstudo
+                                , psicologo.DescricaoAtuacao));
 
 
 
-                SCOPE_IDENTITY = conn.QueryFirstOrDefault<int>(SQL.ToString());
+                    conn.Execute(SQL.ToString());
+
+
+                }
+
+                return true;
 
             }
+            catch (Exception ex)
+            {
 
-            return SCOPE_IDENTITY;
+                throw new Exception(ex.Message);
+                return false;
+            }
+
+
         }
 
         public int Update(Psicologo psicologo)
@@ -212,7 +230,7 @@ namespace App.Infra.Repository
             //                        psicologo.Curso,
             //                        psicologo.DataNascimento,
             //                        psicologo.DescricaoAtuacao, psicologo.CPF_CNPJ));
-                                    
+
 
 
             //    exeCount = conn.Execute(SQL.ToString());
@@ -228,13 +246,16 @@ namespace App.Infra.Repository
             IEnumerable<Atendimento> listaAtendimento = null;
             IEnumerable<Agenda> listaAgenda = null;
 
-
-            SQL = new StringBuilder();
-
-            using (IDbConnection conn = Connection)
+            try
             {
 
-                SQL.AppendLine(string.Format(@"
+
+                SQL = new StringBuilder();
+
+                using (IDbConnection conn = Connection)
+                {
+
+                    SQL.AppendLine(string.Format(@"
 
                        SELECT  U.CPFCNPJ AS CPF_CNPJ
                               ,U.COD_PERFIL AS CodigoPerfil
@@ -270,83 +291,93 @@ namespace App.Infra.Repository
 						  ON U.COD_PERFIL = PERF.COD_PERFIL
 						  INNER JOIN DBO.TBTIPOGRADUACAO AS GRAD
 						  ON P.COD_GRADUACAO = GRAD.COD_GRADUACAO
-                          WHERE U.CPFCNPJ = {0} ", cpf));
+                          WHERE U.CPFCNPJ = '{0}' ", cpf));
 
 
-                psicologo = conn.QueryFirstOrDefault<Psicologo>(SQL.ToString());
+                    psicologo = conn.QueryFirstOrDefault<Psicologo>(SQL.ToString());
 
-                //Se retornou psicologo, busco as informações de atendimento, abordagem e agenda
-                if (psicologo != null)
-                {
+                    //Se retornou psicologo, busco as informações de atendimento, abordagem e agenda
+                    if (psicologo != null)
+                    {
 
-                    SQL = new StringBuilder();
+                        SQL = new StringBuilder();
 
-                    SQL.AppendLine(string.Format(@"
+                        SQL.AppendLine(string.Format(@"
 
                                    SELECT TIPO_ABORD.COD_ABORDAGEM AS CodigoAbordagem
 	                                      ,TIPO_ABORD.DESCRICAO AS DescricaoAbordagem
                                     FROM TBTIPOABORD AS TIPO_ABORD
                                     INNER JOIN TBPROF_TIPOABORD AS PROF_TIPO_ABORD
                                     ON TIPO_ABORD.COD_ABORDAGEM = PROF_TIPO_ABORD.COD_ABORDAGEM
-                                    WHERE PROF_TIPO_ABORD.CRP = {0}",psicologo.CRP));
+                                    WHERE PROF_TIPO_ABORD.CRP = '{0}'", psicologo.CRP));
 
-                    listaAbordagem = conn.Query<Abordagens>(SQL.ToString());
+                        listaAbordagem = conn.Query<Abordagens>(SQL.ToString());
 
 
-                    SQL = new StringBuilder();
+                        SQL = new StringBuilder();
 
-                    SQL.AppendLine(string.Format(@"
+                        SQL.AppendLine(string.Format(@"
 
                                    SELECT TIPO_ATEND.COD_ATENDIMENTO AS CodigoAtendimento
 	                                      ,TIPO_ATEND.DESCRICAO AS DescricaoAtendimento
                                     FROM TBTIPOATEND AS TIPO_ATEND
                                     INNER JOIN TBPROF_TIPOATEND AS PROF_TIPO_ATEND
                                     ON PROF_TIPO_ATEND.COD_ATENDIMENTO = PROF_TIPO_ATEND.COD_ATENDIMENTO
-                                    WHERE PROF_TIPO_ATEND.CRP =  {0}", psicologo.CRP));
+                                    WHERE PROF_TIPO_ATEND.CRP =  '{0}'", psicologo.CRP));
 
-                    listaAtendimento = conn.Query<Atendimento>(SQL.ToString());
+                        listaAtendimento = conn.Query<Atendimento>(SQL.ToString());
 
 
-                    SQL = new StringBuilder();
+                        SQL = new StringBuilder();
 
-                    SQL.AppendLine(string.Format(@"
+                        SQL.AppendLine(string.Format(@"
 
                                    SELECT USU.NOME + ' ' + USU.SOBRENOME AS Nome
 	                                      ,AGENDA.[CPF_PACIENTE] AS CPF_Paciente
 	                                      ,AGENDA.[DATA_AGENDAMENTO] AS DataConsulta
-	                                      ,AGENDA.[HORARIO] AS HorarioConsulta
+	                                      ,CONVERT(DATETIME,AGENDA.[HORARIO]) AS HorarioConsulta
                                     FROM TBAGENDA AS AGENDA
                                     INNER JOIN TBUSUARIO USU
                                     ON AGENDA.[CPF_PACIENTE] = USU.[CPFCNPJ]
-                                    WHERE CPF_CNPJPROF =  {0}", psicologo.CPF_CNPJ));
+                                    WHERE CPF_CNPJPROF =  '{0}'", psicologo.CPF_CNPJ));
 
-                    listaAgenda = conn.Query<Agenda>(SQL.ToString());
+                        listaAgenda = conn.Query<Agenda>(SQL.ToString());
 
+                        psicologo.Agenda = new List<Agenda>();
 
-                    if (listaAbordagem.AsList().Count > 0)
-                    {
-                        psicologo.Abordagens.AsList().AddRange(listaAbordagem);
-                    }
+                        if (listaAbordagem.AsList().Count > 0)
+                        {
+                            //psicologo.Abordagens.AsList().AddRange(listaAbordagem);
+                        }
 
-                    if (listaAtendimento.AsList().Count > 0)
-                    {
-                        psicologo.Atendimentos.AsList().AddRange(listaAtendimento);
-                    }
+                        if (listaAtendimento.AsList().Count > 0)
+                        {
+                            
+                            //psicologo.Atendimentos.AsList().AddRange(listaAtendimento);
+                        }
 
-                    if (listaAgenda.AsList().Count > 0)
-                    {
-                        psicologo.Agenda.AddRange(listaAgenda);
+                        if (listaAgenda.AsList().Count > 0)
+                        {
+                            psicologo.Agenda = new List<Agenda>();
+                            psicologo.Agenda.AddRange(listaAgenda);
+                        }
+
                     }
 
                 }
+            }
+            catch (Exception ex)
+            {
 
+                throw new Exception(ex.Message);
+                psicologo = null;
             }
 
-           
+
 
             return psicologo;
 
-            
+
         }
 
         public bool Autenticar(string cpf, string senha)

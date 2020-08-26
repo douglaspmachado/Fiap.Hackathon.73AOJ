@@ -21,8 +21,8 @@ namespace App.API
         /// </summary>
         /// <param name="cpf_cnpj"></param>
         /// <returns></returns>
-        // [HttpGet]
-        // [Route("Get/{idPsicologo}")]
+        [HttpGet]
+        [Route("Get/{idPsicologo}")]
         public async Task<IActionResult> GetPsicologo(string cpf_cnpj)
         {
             try
@@ -97,9 +97,9 @@ namespace App.API
         {
             try
             {
-                int execCount = _psicologoRepository.Insert(psicologo);
+                bool execCount = _psicologoRepository.Insert(psicologo);
 
-                if (execCount > 0)
+                if (execCount)
                 {
                     return Ok(execCount.ToString());
                 }

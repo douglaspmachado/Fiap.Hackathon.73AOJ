@@ -184,7 +184,7 @@ namespace App.Infra.Repository
                               ,[NUMERO] AS Numero
                               ,[COMPLEMENTO] AS Complemento
                           FROM [dbo].[TBUSUARIO]
-                          WHERE CPFCNPJ = {0} AND SENHA = {1} ", cpf, senha));
+                          WHERE CPFCNPJ = '{0}' AND SENHA = '{1}' ", cpf, senha));
 
 
                 usuario = conn.QueryFirstOrDefault<Usuario>(SQL.ToString());
