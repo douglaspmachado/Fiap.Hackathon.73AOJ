@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
+using App.Application.Interfaces;
+using App.Infra.Repository;
 //using App.Application.Interfaces;
 //using App.Infra.Repository;
 
@@ -33,10 +35,11 @@ namespace App.UI
             });
 
             services.AddMvc();
-            //Add Contexto/Tabelas
-            //services.AddTransient<IJogadorRepository, JogadorRepository>();
-            //services.AddTransient<ITorneio, TorneioRepository>();
-            
+            services.AddTransient<IPacienteRepository, PacienteRepository>();
+            services.AddTransient<ICommonRepository, CommonRepository>();
+            services.AddTransient<IAgendaRepository, AgendaRepository>();
+            services.AddTransient<IPsicologoRepository, PsicologoRepository>();
+
 
             //services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }

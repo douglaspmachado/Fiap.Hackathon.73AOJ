@@ -20,15 +20,16 @@ namespace App.UI.Controllers
         private readonly IConfiguration _configuration;
         private readonly ICommonRepository _commonRepository;
 
-        public TerapeutaController(IConfiguration configuration)
+        public TerapeutaController(IConfiguration configuration, ICommonRepository commonRepository)
         {
             this._configuration = configuration;
-        }
-
-        public TerapeutaController(ICommonRepository commonRepository)
-        {
             this._commonRepository = commonRepository;
         }
+
+        //public TerapeutaController(ICommonRepository commonRepository)
+        //{
+        //    this._commonRepository = commonRepository;
+        //}
 
         [Route("Terapeuta/Cadastro")]
         public IActionResult Cadastro()
@@ -88,7 +89,7 @@ namespace App.UI.Controllers
             psicologo.Endereco.Numero = numero;
             psicologo.Endereco.Pais = pais;
             psicologo.Perfil = new Perfil();
-            psicologo.Perfil.CodigoPerfil = 2; //1- Paciente
+            psicologo.Perfil.CodigoPerfil = 2; //2- Terapeuta
             psicologo.CRP = crp;
             psicologo.CodGraduacao = cboGraduacao;
             psicologo.InstituicaoEnsino = instituicao;
@@ -98,17 +99,17 @@ namespace App.UI.Controllers
             psicologo.DescricaoAtuacao = descricao;
             psicologo.AreaEstudo = string.Empty;
 
-            CodigoAbordagem.ToList().ForEach(p =>
-            {
-                psicologo.Abordagens.ToList().Add(_commonRepository.GetAbordagens().SingleOrDefault(a => a.CodigoAbordagem == p));
+            //CodigoAbordagem.ToList().ForEach(p =>
+            //{
+            //    psicologo.Abordagens.ToList().Add(_commonRepository.GetAbordagens().SingleOrDefault(a => a.CodigoAbordagem == p));
 
-            });
+            //});
 
-            CodigoAtendimento.ToList().ForEach(p =>
-            {
-                psicologo.Atendimentos.ToList().Add(_commonRepository.GetAtendimento().SingleOrDefault(a => a.CodigoAtendimento == p));
+            //CodigoAtendimento.ToList().ForEach(p =>
+            //{
+            //    psicologo.Atendimentos.ToList().Add(_commonRepository.GetAtendimento().SingleOrDefault(a => a.CodigoAtendimento == p));
 
-            });
+            //});
 
 
 

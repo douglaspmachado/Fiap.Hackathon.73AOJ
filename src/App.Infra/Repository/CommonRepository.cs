@@ -35,7 +35,7 @@ namespace App.Infra.Repository
 
             using (IDbConnection conn = Connection)
             {
-                listaAbordagens = conn.Query<Abordagens>("SELECT COD_ABORDAGEM AS Codigo, DESCRICAO As Descricao FROM TBTIPOABORD");
+                listaAbordagens = conn.Query<Abordagens>("SELECT COD_ABORDAGEM AS CodigoAbordagem, DESCRICAO As DescricaoAbordagem FROM TBTIPOABORD");
             }
 
             return listaAbordagens;
@@ -47,7 +47,7 @@ namespace App.Infra.Repository
 
             using (IDbConnection conn = Connection)
             {
-                listaAtendimento = conn.Query<Atendimento>("SELECT COD_ATENDIMENTO as Codigo, DESCRICAO as Descricao FROM TBTIPOATEND");
+                listaAtendimento = conn.Query<Atendimento>("SELECT COD_ATENDIMENTO as CodigoAtendimento, DESCRICAO as DescricaoAtendimento FROM TBTIPOATEND");
             }
 
             return listaAtendimento;
