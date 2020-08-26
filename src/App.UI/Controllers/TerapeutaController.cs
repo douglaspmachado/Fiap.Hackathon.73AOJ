@@ -19,11 +19,13 @@ namespace App.UI.Controllers
         //private readonly string URL_API = "192.168.99.100:20001";
         private readonly IConfiguration _configuration;
         private readonly ICommonRepository _commonRepository;
+        private readonly IPsicologoRepository _ipsicologoRepository;
 
-        public TerapeutaController(IConfiguration configuration, ICommonRepository commonRepository)
+        public TerapeutaController(IConfiguration configuration, ICommonRepository commonRepository, IPsicologoRepository ipsicologoRepository)
         {
             this._configuration = configuration;
             this._commonRepository = commonRepository;
+            this._ipsicologoRepository = ipsicologoRepository;
         }
 
         //public TerapeutaController(ICommonRepository commonRepository)
@@ -36,7 +38,7 @@ namespace App.UI.Controllers
         {
             ViewBag.Abordagem = _commonRepository.GetAbordagens().ToList();
             ViewBag.Atendimento = _commonRepository.GetAtendimento().ToList();
-
+            
 
             return View("Cadastro");
         }
@@ -44,6 +46,7 @@ namespace App.UI.Controllers
          [Route("Terapeuta/Pesquisa")]
         public IActionResult Pesquisa()
         {
+            ViewBag.Psicologo = _ipsicologoRepository.GetAll().ToList();    
             return View("Pesquisa");
         }
 
