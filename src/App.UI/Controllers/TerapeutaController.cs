@@ -38,7 +38,7 @@ namespace App.UI.Controllers
         {
             ViewBag.Abordagem = _commonRepository.GetAbordagens().ToList();
             ViewBag.Atendimento = _commonRepository.GetAtendimento().ToList();
-
+            
 
             return View("Cadastro");
         }
@@ -46,6 +46,7 @@ namespace App.UI.Controllers
         [Route("Terapeuta/Pesquisa")]
         public IActionResult Pesquisa()
         {
+            ViewBag.Psicologo = _psicologoRepository.GetAll().ToList();    
             return View("Pesquisa");
         }
 
