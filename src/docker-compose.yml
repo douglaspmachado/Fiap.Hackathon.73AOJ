@@ -1,26 +1,26 @@
 version: '3.4'
 
 services:
-  therapon.ui:
-    image: ${DOCKER_REGISTRY-}theraponui
+  playershares.ui:
+    image: ${DOCKER_REGISTRY-}playersharesui
     build:
       context: .
       dockerfile: Dockerfile_UI
     ports:
       - "20000:80"
     networks:
-      - therapon-network  
+      - playershares-network  
     
-  therapon.api:
-    image: ${DOCKER_REGISTRY-}theraponapi
+  playershares.api:
+    image: ${DOCKER_REGISTRY-}playersharesapi
     build:
       context: .
       dockerfile: Dockerfile
     ports:
       - "20001:80"
     networks:
-      - therapon-network  
+      - playershares-network  
 
 networks: 
-  therapon-network:
+  playershares-network:
         driver: bridge
