@@ -48,24 +48,32 @@ namespace App.UI.Controllers
         [Route("Home/Auth")]
         public async Task<IActionResult> Auth(string cpfcnpj, string senha)
         {
-            
+
             if (string.IsNullOrEmpty(cpfcnpj) && string.IsNullOrEmpty(senha))
             {
                 return RedirectToAction("Error", "Home");
             }
 
-            var dadosAcesso = new { cpf = cpfcnpj, senha = senha };
+            var usu = _pacienteRepository.Autenticar(cpfcnpj, senha);
 
-            if (_pacienteRepository.Autenticar(cpfcnpj, senha))
+            if (usu != null)
             {
-                HttpContext.Session.SetString("cpf", cpfcnpj);
-                return RedirectToAction("Agenda", "Terapeuta", new { cpf = cpfcnpj });
+                if (usu.CodPerfil == 1) //Paciente
+                {
+                    HttpContext.Session.SetString("cpf", cpfcnpj);
+                    return RedirectToAction("Agenda", "Pacientes", new { cpf = cpfcnpj });
+                }
+                else
+                {
+                    HttpContext.Session.SetString("cpf", cpfcnpj);
+                    return RedirectToAction("Agenda", "Terapeuta", new { cpf = cpfcnpj });
+                }
+
             }
             else
             {
                 return View("Error");
             }
-
             
         }
 

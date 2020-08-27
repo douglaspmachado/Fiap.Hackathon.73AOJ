@@ -65,11 +65,10 @@ namespace App.Domain.Entity
        
         public Graduacao Graduacao { get; set; }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        [Required]
+
         public List<Agenda> Agenda { get; set; }
+
+        public string DescricaoLabel { get; set; }
 
 
 

@@ -8,6 +8,7 @@ using App.Domain.Entity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
+using App.Application.Interfaces;
 
 namespace App.UI.Controllers
 {
@@ -17,10 +18,18 @@ namespace App.UI.Controllers
         //private readonly string URL_API = "playershares.api";
         //private readonly string URL_API = "192.168.99.100:20001";
         private readonly IConfiguration _configuration;
+        private readonly IPacienteRepository _pacienteRepository;
+        private readonly IPsicologoRepository _psicologoRepository;
 
-        public PacientesController(IConfiguration configuration)
+
+
+        public PacientesController(IConfiguration configuration,
+            IPacienteRepository pacienteRepository,
+            IPsicologoRepository psicologoRepository)
         {
             this._configuration = configuration;
+            this._pacienteRepository = pacienteRepository;
+            this._psicologoRepository = psicologoRepository;
         }
 
         [Route("Pacientes/Cadastro")]
@@ -66,32 +75,98 @@ namespace App.UI.Controllers
             paciente.Perfil.CodigoPerfil = 1; //1- Paciente
 
 
-
-            var json = JsonConvert.SerializeObject(paciente);
-
-            var data = new StringContent(json, Encoding.UTF8, "application/json");
-
-            var url = string.Format("http://{0}/api/Paciente/Insert", _configuration["ServicenameAPI"]);
-
-
-            using (var client = new HttpClient())
+            if (_pacienteRepository.Insert(paciente))
             {
-                var httpResponse = await client.PostAsync(url, data);
+                return RedirectToAction("Login", "Home");
+            }
+            else
+            {
+                return RedirectToAction("Error", "Home");
+            }
 
-                var idPaciente = httpResponse.Content.ReadAsStringAsync().Result;
 
-                if (httpResponse.StatusCode == System.Net.HttpStatusCode.OK)
+        }
+
+        [Route("Pacientes/Agenda")]
+        public async Task<IActionResult> Agenda(string cpf)
+        {
+
+            if (!string.IsNullOrEmpty(cpf))
+            {
+
+                var paciente = _pacienteRepository.Select(cpf);
+
+                if (paciente != null)
                 {
-                    return RedirectToAction("Agendar", "Psicologos", new { id = idPaciente });
+                    return View("Agenda", paciente);
                 }
                 else
                 {
-                    ViewBag.Message = "Error";
-                    return View("Error");
+                    return RedirectToAction("Error", "Home");
                 }
 
             }
+            else
+            {
+                return RedirectToAction("Error", "Home");
+            }
+
 
         }
+
+
+        [Route("Pacientes/Agendar")]
+        public async Task<IActionResult> Agendar(string cpf)
+        {
+
+            if (!string.IsNullOrEmpty(cpf))
+            {
+
+                ViewBag.ListaPsicologo = _psicologoRepository.GetAll().ToList();
+                ViewBag.CPF = cpf;
+
+                return View("Agendar");
+            }
+            else
+            {
+                return RedirectToAction("Error", "Home");
+            }
+
+        }
+
+
+
+        [Route("Pacientes/SalvarAgenda")]
+        public async Task<IActionResult> SalvarAgenda(string cpf
+            , string data_consulta
+            , string horario_consulta
+            , string cboMedico)
+        {
+
+
+            if (!string.IsNullOrEmpty(cpf))
+            {
+
+                bool retorno = _pacienteRepository.InsertAgenda(cpf, cboMedico, Convert.ToDateTime(data_consulta), horario_consulta);
+
+                if (retorno)
+                {
+                    var paciente = _pacienteRepository.Select(cpf);
+
+                    return View("Agenda", paciente);
+                }
+                else
+                {
+                    return RedirectToAction("Error", "Home");
+                }
+
+            }
+            else
+            {
+                return RedirectToAction("Error", "Home");
+            }
+
+        }
+
     }
 }

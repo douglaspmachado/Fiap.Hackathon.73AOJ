@@ -1,4 +1,5 @@
 using App.Domain.Entity;
+using System;
 
 namespace App.Application.Interfaces
 {
@@ -6,10 +7,12 @@ namespace App.Application.Interfaces
     {
         Usuario Select(string cpf);
 
-        int Insert(Usuario usuario);
+        bool Insert(Usuario usuario);
 
         int Update(Usuario usuario);
 
-        bool Autenticar(string cpf, string senha);
+        Usuario Autenticar(string cpf, string senha);
+
+        bool InsertAgenda(string cpf, string cpf_prof, DateTime dtConsulta, string time);
     }
 }

@@ -25,6 +25,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Update="Views\Pacientes\Agenda.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Pacientes\Agendar.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Content Update="Views\Terapeuta\Agenda.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>

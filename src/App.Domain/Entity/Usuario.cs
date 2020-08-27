@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace App.Domain.Entity
@@ -16,11 +17,8 @@ namespace App.Domain.Entity
         [Required]
         public string CPF_CNPJ { get; set; }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        //[Required]
-        //public string Perfil { get; set; }
+     
+        public int CodPerfil { get; set; }
 
         /// <summary>
         /// 
@@ -70,6 +68,8 @@ namespace App.Domain.Entity
 
         [Required]
         public Perfil Perfil { get; set; }
+
+        public List<Agenda> Agenda { get; set; }
 
     }
 }

@@ -66,9 +66,9 @@ namespace App.API
         {
             try
             {
-                int execCount = _pacienteRepository.Insert(usuario);
+                bool execCount = _pacienteRepository.Insert(usuario);
 
-                if (execCount > 0)
+                if (execCount)
                 {
                     return Ok(execCount.ToString());
                 }
@@ -128,32 +128,7 @@ namespace App.API
         }
 
 
-        [HttpGet]
-        [Route("Autenticar")]
-        public async Task<IActionResult> Autenticar(string cpf, string senha)
-        {
-            
 
-            try
-            {
-                bool aut = _pacienteRepository.Autenticar(cpf, senha);
-
-                if (aut)
-                {
-                   return Ok();
-                }
-                else
-                {
-                    return NotFound();
-                }
-
-                
-            }
-            catch (Exception)
-            {
-                return StatusCode(500);
-            }
-        }
 
 
     }

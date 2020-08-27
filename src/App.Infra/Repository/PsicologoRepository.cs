@@ -36,7 +36,7 @@ namespace App.Infra.Repository
             {
                 SQL.AppendLine(@"
 
-                             SELECT  U.CPFCNPJ AS CPF_CNPJ
+							SELECT  U.CPFCNPJ AS CPF_CNPJ
                               ,U.COD_PERFIL AS CodigoPerfil
 							  ,PERF.DESCRICAO as DescricaoPerfil
                               ,U.NOME AS Nome
@@ -61,6 +61,7 @@ namespace App.Infra.Repository
                               ,P.ANO_FIM AS AnoTermino
                               ,P.AREA_ESTUDO AS AreaEstudo
                               ,P.DESCRICAO AS DescricaoAtuacao
+							  ,u.NOME + ' ' + u.SOBRENOME + ' -  CRP:' + p.CRP As DescricaoLabel
 							  
 
                           FROM dbo.TBUSUARIO AS U
@@ -358,7 +359,6 @@ namespace App.Infra.Repository
 
                         if (listaAgenda.AsList().Count > 0)
                         {
-                            psicologo.Agenda = new List<Agenda>();
                             psicologo.Agenda.AddRange(listaAgenda);
                         }
 
