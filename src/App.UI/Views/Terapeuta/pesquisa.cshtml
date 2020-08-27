@@ -94,16 +94,18 @@
 						<div class="table-head">
 							<div class="serial">CRP</div>
 							<div class="country">Nome</div>
-							<div class="visit">Área de estudo</div>
-							<div class="percentage">Curso</div>
+							<div class="country">Curso</div>
+              <div class="country">Especialidade</div>
+							
 						</div>
             @foreach (var psicologo in ViewBag.psicologo)
             {
               <div class="table-row">
                 <div class="serial">@psicologo.CRP</div>
-                <div class="country">@(psicologo.Nome + " " + psicologo.Sobrenome)</div>
-                <div class="visit">@psicologo.AreaEstudo</div>
-                <div class="percentage">@psicologo.Curso</div>
+                <div class="country">@(psicologo.Nome + " " + psicologo.Sobrenome)</div>                
+                <div class="country">@psicologo.Curso</div>
+                <div class="country">@psicologo.AreaEstudo</div>
+                <a href="#" class="genric-btn info">Agenda</a>
               </div>
             }						
 					</div>
