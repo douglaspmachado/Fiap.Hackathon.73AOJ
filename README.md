@@ -16,8 +16,8 @@
 ## Equipe
 
 <ul>
-  <li>Douglas Pereira Machado<li/>
-  <li>Gustavo Massuela<li/>
-  <li>Lucas Zan<li/>
+  <li>Douglas Pereira Machado</li>
+  <li>Gustavo Massuela</li>
+  <li>Lucas Zan</li>
  <ul/>
   
